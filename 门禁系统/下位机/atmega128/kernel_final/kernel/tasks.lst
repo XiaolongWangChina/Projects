@@ -1,0 +1,1336 @@
+   1               		.file	"tasks.c"
+   2               		.arch atmega128
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	process_commands
+  20               	process_commands:
+  21               	.LFB14:
+  22               	.LM1:
+  23               	/* prologue: frame size=16 */
+  24 0000 CF93      		push r28
+  25 0002 DF93      		push r29
+  26 0004 CDB7      		in r28,__SP_L__
+  27 0006 DEB7      		in r29,__SP_H__
+  28 0008 6097      		sbiw r28,16
+  29 000a 0FB6      		in __tmp_reg__,__SREG__
+  30 000c F894      		cli
+  31 000e DEBF      		out __SP_H__,r29
+  32 0010 0FBE      		out __SREG__,__tmp_reg__
+  33 0012 CDBF      		out __SP_L__,r28
+  34               	/* prologue end (size=10) */
+  35               	.L3:
+  36 0014 80E9      		ldi r24,lo8(-12144)
+  37 0016 90ED      		ldi r25,hi8(-12144)
+  38               	.LVL0:
+  39               	.L4:
+  40               	.LBB2:
+  41               	.LM2:
+  42               	/* #APP */
+  43 0018 0000      		nop
+  44               		
+  45 001a 0000      		nop
+  46               		
+  47 001c 0000      		nop
+  48               		
+  49 001e 0000      		nop
+  50               		
+  51               	/* #NOAPP */
+  52 0020 0197      		sbiw r24,1
+  53 0022 01F4      		brne .L4
+  54 0024 80E9      		ldi r24,lo8(-12144)
+  55 0026 90ED      		ldi r25,hi8(-12144)
+  56               	.LVL1:
+  57               	.L6:
+  58               	.LBE2:
+  59               	.LBB3:
+  60               	.LM3:
+  61               	/* #APP */
+  62 0028 0000      		nop
+  63               		
+  64 002a 0000      		nop
+  65               		
+  66 002c 0000      		nop
+  67               		
+  68 002e 0000      		nop
+  69               		
+  70               	/* #NOAPP */
+  71 0030 0197      		sbiw r24,1
+  72 0032 01F4      		brne .L6
+  73               	.LBE3:
+  74               	.LM4:
+  75 0034 0E94 0000 		call if_receive_a_frame
+  76               	.LVL2:
+  77 0038 8823      		tst r24
+  78 003a 01F4      		brne .+2
+  79 003c 00C0      		rjmp .L8
+  80               	.LM5:
+  81 003e 0E94 0000 		call Reset_receive_frame
+  82               	.LM6:
+  83 0042 60E1      		ldi r22,lo8(16)
+  84 0044 70E0      		ldi r23,hi8(16)
+  85 0046 CE01      		movw r24,r28
+  86 0048 0196      		adiw r24,1
+  87 004a 0E94 0000 		call UART0_read
+  88               	.LM7:
+  89 004e 8981      		ldd r24,Y+1
+  90 0050 8A3A      		cpi r24,lo8(-86)
+  91 0052 01F0      		breq .+2
+  92 0054 00C0      		rjmp .L33
+  93 0056 8A81      		ldd r24,Y+2
+  94 0058 8F3F      		cpi r24,lo8(-1)
+  95 005a 01F0      		breq .+2
+  96 005c 00C0      		rjmp .L33
+  97 005e 8B81      		ldd r24,Y+3
+  98 0060 8730      		cpi r24,lo8(7)
+  99 0062 01F0      		breq .+2
+ 100 0064 00C0      		rjmp .L33
+ 101 0066 8C81      		ldd r24,Y+4
+ 102 0068 8330      		cpi r24,lo8(3)
+ 103 006a 01F0      		breq .+2
+ 104 006c 00C0      		rjmp .L33
+ 105               	.LM8:
+ 106 006e 8D81      		ldd r24,Y+5
+ 107 0070 873B      		cpi r24,lo8(-73)
+ 108 0072 01F0      		breq .L16
+ 109 0074 883B      		cpi r24,lo8(-72)
+ 110 0076 00F4      		brsh .L19
+ 111 0078 873A      		cpi r24,lo8(-89)
+ 112 007a 01F0      		breq .+2
+ 113 007c 00C0      		rjmp .L8
+ 114 007e 00C0      		rjmp .L15
+ 115               	.L19:
+ 116 0080 8D3C      		cpi r24,lo8(-51)
+ 117 0082 01F0      		breq .L17
+ 118 0084 8A3D      		cpi r24,lo8(-38)
+ 119 0086 01F0      		breq .+2
+ 120 0088 00C0      		rjmp .L8
+ 121 008a 00C0      		rjmp .L18
+ 122               	.L15:
+ 123               	.LM9:
+ 124 008c 0D99      		sbic 33-0x20,5
+ 125 008e 00C0      		rjmp .L20
+ 126               	.LM10:
+ 127 0090 1092 0000 		sts UART0_TxBuf6+5,__zero_reg__
+ 128 0094 00C0      		rjmp .L22
+ 129               	.L20:
+ 130               	.LM11:
+ 131 0096 81E0      		ldi r24,lo8(1)
+ 132 0098 8093 0000 		sts UART0_TxBuf6+5,r24
+ 133               	.L22:
+ 134               	.LM12:
+ 135 009c 60E1      		ldi r22,lo8(16)
+ 136 009e 70E0      		ldi r23,hi8(16)
+ 137 00a0 80E0      		ldi r24,lo8(UART0_TxBuf6)
+ 138 00a2 90E0      		ldi r25,hi8(UART0_TxBuf6)
+ 139 00a4 00C0      		rjmp .L46
+ 140               	.L16:
+ 141               	.LM13:
+ 142 00a6 1F9A      		sbi 35-0x20,7
+ 143               	.LM14:
+ 144 00a8 60E1      		ldi r22,lo8(16)
+ 145 00aa 70E0      		ldi r23,hi8(16)
+ 146 00ac 80E0      		ldi r24,lo8(UART0_TxBuf7)
+ 147 00ae 90E0      		ldi r25,hi8(UART0_TxBuf7)
+ 148               	.L46:
+ 149 00b0 0E94 0000 		call UART0_write
+ 150 00b4 00C0      		rjmp .L8
+ 151               	.L17:
+ 152               	.LM15:
+ 153 00b6 8E81      		ldd r24,Y+6
+ 154 00b8 8823      		tst r24
+ 155 00ba 01F4      		brne .L23
+ 156               	.LM16:
+ 157 00bc 81E0      		ldi r24,lo8(1)
+ 158 00be 8093 0000 		sts userauthed,r24
+ 159               	.LM17:
+ 160 00c2 1F9A      		sbi 35-0x20,7
+ 161               	.LM18:
+ 162 00c4 8F81      		ldd r24,Y+7
+ 163 00c6 8093 0000 		sts fingermapid,r24
+ 164 00ca 00C0      		rjmp .L8
+ 165               	.L23:
+ 166               	.LM19:
+ 167 00cc 8091 6200 		lds r24,98
+ 168 00d0 8B7F      		andi r24,lo8(-5)
+ 169 00d2 8093 6200 		sts 98,r24
+ 170 00d6 80E3      		ldi r24,lo8(30000)
+ 171 00d8 95E7      		ldi r25,hi8(30000)
+ 172               	.LVL3:
+ 173               	.L25:
+ 174               	.LBB4:
+ 175               	.LM20:
+ 176               	/* #APP */
+ 177 00da 0000      		nop
+ 178               		
+ 179 00dc 0000      		nop
+ 180               		
+ 181 00de 0000      		nop
+ 182               		
+ 183 00e0 0000      		nop
+ 184               		
+ 185               	/* #NOAPP */
+ 186 00e2 0197      		sbiw r24,1
+ 187 00e4 01F4      		brne .L25
+ 188 00e6 23E0      		ldi r18,lo8(3)
+ 189               	.LVL4:
+ 190               	.LVL5:
+ 191               	.L27:
+ 192               	.LBE4:
+ 193               	.LBB5:
+ 194               	.LM21:
+ 195 00e8 8091 6200 		lds r24,98
+ 196               	.LVL6:
+ 197 00ec 8860      		ori r24,lo8(8)
+ 198 00ee 8093 6200 		sts 98,r24
+ 199 00f2 80E5      		ldi r24,lo8(-15536)
+ 200 00f4 93EC      		ldi r25,hi8(-15536)
+ 201               	.LVL7:
+ 202               	.L28:
+ 203               	.LBB6:
+ 204               	/* #APP */
+ 205 00f6 0000      		nop
+ 206               		
+ 207 00f8 0000      		nop
+ 208               		
+ 209 00fa 0000      		nop
+ 210               		
+ 211 00fc 0000      		nop
+ 212               		
+ 213               	/* #NOAPP */
+ 214 00fe 0197      		sbiw r24,1
+ 215 0100 01F4      		brne .L28
+ 216               	.LBE6:
+ 217 0102 8091 6200 		lds r24,98
+ 218               	.LVL8:
+ 219 0106 877F      		andi r24,lo8(-9)
+ 220 0108 8093 6200 		sts 98,r24
+ 221 010c 80E5      		ldi r24,lo8(-15536)
+ 222 010e 93EC      		ldi r25,hi8(-15536)
+ 223               	.LVL9:
+ 224               	.L30:
+ 225               	.LBB7:
+ 226               	/* #APP */
+ 227 0110 0000      		nop
+ 228               		
+ 229 0112 0000      		nop
+ 230               		
+ 231 0114 0000      		nop
+ 232               		
+ 233 0116 0000      		nop
+ 234               		
+ 235               	/* #NOAPP */
+ 236 0118 0197      		sbiw r24,1
+ 237 011a 01F4      		brne .L30
+ 238               	.LBE7:
+ 239 011c 2150      		subi r18,lo8(-(-1))
+ 240 011e 01F4      		brne .L27
+ 241               	.LBE5:
+ 242               	.LM22:
+ 243 0120 8091 6200 		lds r24,98
+ 244               	.LVL10:
+ 245 0124 8460      		ori r24,lo8(4)
+ 246 0126 8093 6200 		sts 98,r24
+ 247 012a 00C0      		rjmp .L8
+ 248               	.LVL11:
+ 249               	.L18:
+ 250               	.LM23:
+ 251 012c 8E81      		ldd r24,Y+6
+ 252 012e 8093 0000 		sts name,r24
+ 253               	.LM24:
+ 254 0132 8F81      		ldd r24,Y+7
+ 255 0134 8093 0000 		sts name+1,r24
+ 256               	.LM25:
+ 257 0138 8885      		ldd r24,Y+8
+ 258 013a 8093 0000 		sts name+2,r24
+ 259               	.LM26:
+ 260 013e 8985      		ldd r24,Y+9
+ 261 0140 8093 0000 		sts name+3,r24
+ 262               	.LVL12:
+ 263               	.L8:
+ 264               	.LM27:
+ 265 0144 8AE0      		ldi r24,lo8(10)
+ 266 0146 90E0      		ldi r25,hi8(10)
+ 267 0148 0E94 0000 		call task_delay
+ 268               	.LVL13:
+ 269 014c 00C0      		rjmp .L3
+ 270               	.L33:
+ 271               	/* epilogue: frame size=16 */
+ 272 014e 6096      		adiw r28,16
+ 273 0150 0FB6      		in __tmp_reg__,__SREG__
+ 274 0152 F894      		cli
+ 275 0154 DEBF      		out __SP_H__,r29
+ 276 0156 0FBE      		out __SREG__,__tmp_reg__
+ 277 0158 CDBF      		out __SP_L__,r28
+ 278 015a DF91      		pop r29
+ 279 015c CF91      		pop r28
+ 280 015e 0895      		ret
+ 281               	/* epilogue end (size=9) */
+ 282               	/* function process_commands size 242 (223) */
+ 283               	.LFE14:
+ 285               	.global	password_modify
+ 287               	password_modify:
+ 288               	.LFB11:
+ 289               	.LM28:
+ 290               	/* prologue: frame size=0 */
+ 291 0160 BF92      		push r11
+ 292 0162 CF92      		push r12
+ 293 0164 DF92      		push r13
+ 294 0166 EF92      		push r14
+ 295 0168 FF92      		push r15
+ 296 016a 0F93      		push r16
+ 297 016c 1F93      		push r17
+ 298 016e CF93      		push r28
+ 299 0170 DF93      		push r29
+ 300               	/* prologue end (size=9) */
+ 301 0172 31E0      		ldi r19,lo8(1)
+ 302 0174 B32E      		mov r11,r19
+ 303               	.LVL14:
+ 304               	.L48:
+ 305               	.LM29:
+ 306 0176 80E9      		ldi r24,lo8(-12144)
+ 307 0178 90ED      		ldi r25,hi8(-12144)
+ 308               	.LVL15:
+ 309               	.L49:
+ 310               	.LBB8:
+ 311               	.LM30:
+ 312               	/* #APP */
+ 313 017a 0000      		nop
+ 314               		
+ 315 017c 0000      		nop
+ 316               		
+ 317 017e 0000      		nop
+ 318               		
+ 319 0180 0000      		nop
+ 320               		
+ 321               	/* #NOAPP */
+ 322 0182 0197      		sbiw r24,1
+ 323 0184 01F4      		brne .L49
+ 324 0186 80E9      		ldi r24,lo8(-12144)
+ 325 0188 90ED      		ldi r25,hi8(-12144)
+ 326               	.LVL16:
+ 327               	.L51:
+ 328               	.LBE8:
+ 329               	.LBB9:
+ 330               	.LM31:
+ 331               	/* #APP */
+ 332 018a 0000      		nop
+ 333               		
+ 334 018c 0000      		nop
+ 335               		
+ 336 018e 0000      		nop
+ 337               		
+ 338 0190 0000      		nop
+ 339               		
+ 340               	/* #NOAPP */
+ 341 0192 0197      		sbiw r24,1
+ 342 0194 01F4      		brne .L51
+ 343               	.LBE9:
+ 344               	.LM32:
+ 345 0196 8091 0000 		lds r24,confirm
+ 346               	.LVL17:
+ 347 019a 8823      		tst r24
+ 348 019c 01F4      		brne .+2
+ 349 019e 00C0      		rjmp .L53
+ 350 01a0 8091 0000 		lds r24,passwdmodify
+ 351 01a4 8823      		tst r24
+ 352 01a6 01F4      		brne .+2
+ 353 01a8 00C0      		rjmp .L53
+ 354               	.LM33:
+ 355 01aa 1092 0000 		sts confirm,__zero_reg__
+ 356               	.LM34:
+ 357 01ae 1092 0000 		sts passwdmodify,__zero_reg__
+ 358               	.LM35:
+ 359 01b2 8091 0000 		lds r24,userauthed
+ 360 01b6 8823      		tst r24
+ 361 01b8 01F4      		brne .+2
+ 362 01ba 00C0      		rjmp .L56
+ 363               	.LM36:
+ 364 01bc 9598      		cbi 50-0x20,5
+ 365 01be C0E0      		ldi r28,lo8(passwd)
+ 366 01c0 D0E0      		ldi r29,hi8(passwd)
+ 367 01c2 20E0      		ldi r18,lo8(passwd_confirm)
+ 368 01c4 E22E      		mov r14,r18
+ 369 01c6 20E0      		ldi r18,hi8(passwd_confirm)
+ 370 01c8 F22E      		mov r15,r18
+ 371               	.L58:
+ 372               	.LM37:
+ 373 01ca 8881      		ld r24,Y
+ 374 01cc 0E94 0000 		call GetKeyValue
+ 375 01d0 182F      		mov r17,r24
+ 376 01d2 F701      		movw r30,r14
+ 377 01d4 8081      		ld r24,Z
+ 378 01d6 0E94 0000 		call GetKeyValue
+ 379 01da 1817      		cp r17,r24
+ 380 01dc 01F0      		breq .L59
+ 381 01de 25E0      		ldi r18,lo8(5)
+ 382               	.LVL18:
+ 383               	.LVL19:
+ 384               	.L61:
+ 385               	.LBB10:
+ 386               	.LM38:
+ 387 01e0 8091 6200 		lds r24,98
+ 388               	.LVL20:
+ 389 01e4 8860      		ori r24,lo8(8)
+ 390 01e6 8093 6200 		sts 98,r24
+ 391 01ea 80E2      		ldi r24,lo8(20000)
+ 392 01ec 9EE4      		ldi r25,hi8(20000)
+ 393               	.LVL21:
+ 394               	.L62:
+ 395               	.LBB11:
+ 396               	/* #APP */
+ 397 01ee 0000      		nop
+ 398               		
+ 399 01f0 0000      		nop
+ 400               		
+ 401 01f2 0000      		nop
+ 402               		
+ 403 01f4 0000      		nop
+ 404               		
+ 405               	/* #NOAPP */
+ 406 01f6 0197      		sbiw r24,1
+ 407 01f8 01F4      		brne .L62
+ 408               	.LBE11:
+ 409 01fa 8091 6200 		lds r24,98
+ 410               	.LVL22:
+ 411 01fe 877F      		andi r24,lo8(-9)
+ 412 0200 8093 6200 		sts 98,r24
+ 413 0204 80E2      		ldi r24,lo8(20000)
+ 414 0206 9EE4      		ldi r25,hi8(20000)
+ 415               	.LVL23:
+ 416               	.L64:
+ 417               	.LBB12:
+ 418               	/* #APP */
+ 419 0208 0000      		nop
+ 420               		
+ 421 020a 0000      		nop
+ 422               		
+ 423 020c 0000      		nop
+ 424               		
+ 425 020e 0000      		nop
+ 426               		
+ 427               	/* #NOAPP */
+ 428 0210 0197      		sbiw r24,1
+ 429 0212 01F4      		brne .L64
+ 430               	.LBE12:
+ 431 0214 2150      		subi r18,lo8(-(-1))
+ 432 0216 01F4      		brne .L61
+ 433 0218 BB24      		clr r11
+ 434 021a 00C0      		rjmp .L56
+ 435               	.LVL24:
+ 436               	.L59:
+ 437 021c 2196      		adiw r28,1
+ 438 021e 0894      		sec
+ 439 0220 E11C      		adc r14,__zero_reg__
+ 440 0222 F11C      		adc r15,__zero_reg__
+ 441               	.LBE10:
+ 442               	.LM39:
+ 443 0224 F0E0      		ldi r31,hi8(passwd+6)
+ 444 0226 C030      		cpi r28,lo8(passwd+6)
+ 445 0228 DF07      		cpc r29,r31
+ 446 022a 01F0      		breq .+2
+ 447 022c 00C0      		rjmp .L58
+ 448               	.LM40:
+ 449 022e BB20      		tst r11
+ 450 0230 01F4      		brne .+2
+ 451 0232 00C0      		rjmp .L56
+ 452               	.LBB13:
+ 453               	.LM41:
+ 454 0234 9498      		cbi 50-0x20,4
+ 455 0236 22E0      		ldi r18,lo8(2)
+ 456               	.LVL25:
+ 457               	.LVL26:
+ 458               	.L69:
+ 459               	.LBB14:
+ 460               	.LM42:
+ 461 0238 8091 6200 		lds r24,98
+ 462               	.LVL27:
+ 463 023c 8860      		ori r24,lo8(8)
+ 464 023e 8093 6200 		sts 98,r24
+ 465 0242 80ED      		ldi r24,lo8(2000)
+ 466 0244 97E0      		ldi r25,hi8(2000)
+ 467               	.LVL28:
+ 468               	.L70:
+ 469               	.LBB15:
+ 470               	/* #APP */
+ 471 0246 0000      		nop
+ 472               		
+ 473 0248 0000      		nop
+ 474               		
+ 475 024a 0000      		nop
+ 476               		
+ 477 024c 0000      		nop
+ 478               		
+ 479               	/* #NOAPP */
+ 480 024e 0197      		sbiw r24,1
+ 481 0250 01F4      		brne .L70
+ 482               	.LBE15:
+ 483 0252 8091 6200 		lds r24,98
+ 484               	.LVL29:
+ 485 0256 877F      		andi r24,lo8(-9)
+ 486 0258 8093 6200 		sts 98,r24
+ 487 025c 80ED      		ldi r24,lo8(2000)
+ 488 025e 97E0      		ldi r25,hi8(2000)
+ 489               	.LVL30:
+ 490               	.L72:
+ 491               	.LBB16:
+ 492               	/* #APP */
+ 493 0260 0000      		nop
+ 494               		
+ 495 0262 0000      		nop
+ 496               		
+ 497 0264 0000      		nop
+ 498               		
+ 499 0266 0000      		nop
+ 500               		
+ 501               	/* #NOAPP */
+ 502 0268 0197      		sbiw r24,1
+ 503 026a 01F4      		brne .L72
+ 504               	.LBE16:
+ 505 026c 2150      		subi r18,lo8(-(-1))
+ 506 026e 01F4      		brne .L69
+ 507 0270 90E0      		ldi r25,lo8(name)
+ 508 0272 C92E      		mov r12,r25
+ 509 0274 90E0      		ldi r25,hi8(name)
+ 510 0276 D92E      		mov r13,r25
+ 511 0278 80E0      		ldi r24,lo8(UART0_TxBuf2+5)
+ 512 027a E82E      		mov r14,r24
+ 513 027c 80E0      		ldi r24,hi8(UART0_TxBuf2+5)
+ 514 027e F82E      		mov r15,r24
+ 515               	.LVL31:
+ 516 0280 CCEF      		ldi r28,lo8(-4)
+ 517 0282 DFEF      		ldi r29,hi8(-4)
+ 518 0284 00E0      		ldi r16,lo8(passwd-4)
+ 519 0286 10E0      		ldi r17,hi8(passwd-4)
+ 520               	.LVL32:
+ 521               	.L75:
+ 522 0288 9E01      		movw r18,r28
+ 523               	.LVL33:
+ 524 028a 2B5F      		subi r18,lo8(-(5))
+ 525               	.LVL34:
+ 526               	.LBE14:
+ 527               	.LM43:
+ 528 028c 2530      		cpi r18,lo8(5)
+ 529 028e 00F4      		brsh .L76
+ 530               	.LM44:
+ 531 0290 F601      		movw r30,r12
+ 532 0292 00C0      		rjmp .L102
+ 533               	.L76:
+ 534               	.LM45:
+ 535 0294 2B30      		cpi r18,lo8(11)
+ 536 0296 00F4      		brsh .L78
+ 537               	.LM46:
+ 538 0298 F801      		movw r30,r16
+ 539               	.L102:
+ 540 029a 8081      		ld r24,Z
+ 541 029c 0E94 0000 		call GetKeyValue
+ 542               	.LVL35:
+ 543 02a0 F701      		movw r30,r14
+ 544 02a2 8083      		st Z,r24
+ 545               	.LVL36:
+ 546               	.L78:
+ 547 02a4 0894      		sec
+ 548 02a6 C11C      		adc r12,__zero_reg__
+ 549 02a8 D11C      		adc r13,__zero_reg__
+ 550 02aa 0894      		sec
+ 551 02ac E11C      		adc r14,__zero_reg__
+ 552 02ae F11C      		adc r15,__zero_reg__
+ 553 02b0 2196      		adiw r28,1
+ 554 02b2 0F5F      		subi r16,lo8(-(1))
+ 555 02b4 1F4F      		sbci r17,hi8(-(1))
+ 556               	.LM47:
+ 557 02b6 C630      		cpi r28,6
+ 558 02b8 D105      		cpc r29,__zero_reg__
+ 559 02ba 01F4      		brne .L75
+ 560               	.LM48:
+ 561 02bc 60E1      		ldi r22,lo8(16)
+ 562 02be 70E0      		ldi r23,hi8(16)
+ 563 02c0 80E0      		ldi r24,lo8(UART0_TxBuf2)
+ 564 02c2 90E0      		ldi r25,hi8(UART0_TxBuf2)
+ 565 02c4 0E94 0000 		call UART0_write
+ 566               	.LVL37:
+ 567               	.L56:
+ 568               	.LBE13:
+ 569               	.LM49:
+ 570 02c8 1092 0000 		sts get_key_count,__zero_reg__
+ 571               	.L53:
+ 572               	.LM50:
+ 573 02cc 8AE0      		ldi r24,lo8(10)
+ 574 02ce 90E0      		ldi r25,hi8(10)
+ 575               	.LVL38:
+ 576 02d0 0E94 0000 		call task_delay
+ 577               	.LVL39:
+ 578 02d4 00C0      		rjmp .L48
+ 579               	/* epilogue: frame size=0 */
+ 580               	/* epilogue: noreturn */
+ 581               	/* epilogue end (size=0) */
+ 582               	/* function password_modify size 267 (258) */
+ 583               	.LFE11:
+ 585               	.global	password_authentication
+ 587               	password_authentication:
+ 588               	.LFB10:
+ 589               	.LM51:
+ 590               	/* prologue: frame size=0 */
+ 591 02d6 CF92      		push r12
+ 592 02d8 DF92      		push r13
+ 593 02da EF92      		push r14
+ 594 02dc FF92      		push r15
+ 595 02de 0F93      		push r16
+ 596 02e0 1F93      		push r17
+ 597 02e2 CF93      		push r28
+ 598 02e4 DF93      		push r29
+ 599               	/* prologue end (size=8) */
+ 600               	.L105:
+ 601 02e6 80E9      		ldi r24,lo8(-12144)
+ 602 02e8 90ED      		ldi r25,hi8(-12144)
+ 603               	.LVL40:
+ 604               	.L106:
+ 605               	.LBB17:
+ 606               	.LM52:
+ 607               	/* #APP */
+ 608 02ea 0000      		nop
+ 609               		
+ 610 02ec 0000      		nop
+ 611               		
+ 612 02ee 0000      		nop
+ 613               		
+ 614 02f0 0000      		nop
+ 615               		
+ 616               	/* #NOAPP */
+ 617 02f2 0197      		sbiw r24,1
+ 618 02f4 01F4      		brne .L106
+ 619 02f6 80E9      		ldi r24,lo8(-12144)
+ 620 02f8 90ED      		ldi r25,hi8(-12144)
+ 621               	.LVL41:
+ 622               	.L108:
+ 623               	.LBE17:
+ 624               	.LBB18:
+ 625               	.LM53:
+ 626               	/* #APP */
+ 627 02fa 0000      		nop
+ 628               		
+ 629 02fc 0000      		nop
+ 630               		
+ 631 02fe 0000      		nop
+ 632               		
+ 633 0300 0000      		nop
+ 634               		
+ 635               	/* #NOAPP */
+ 636 0302 0197      		sbiw r24,1
+ 637 0304 01F4      		brne .L108
+ 638               	.LBE18:
+ 639               	.LM54:
+ 640 0306 8091 0000 		lds r24,confirm
+ 641               	.LVL42:
+ 642 030a 8823      		tst r24
+ 643 030c 01F0      		breq .L110
+ 644 030e 8091 0000 		lds r24,passwdauth
+ 645 0312 8823      		tst r24
+ 646 0314 01F0      		breq .L110
+ 647               	.LBB19:
+ 648               	.LM55:
+ 649 0316 1092 0000 		sts confirm,__zero_reg__
+ 650               	.LM56:
+ 651 031a 1092 0000 		sts passwdauth,__zero_reg__
+ 652               	.LM57:
+ 653 031e 1092 0000 		sts userauthed,__zero_reg__
+ 654               	.LM58:
+ 655 0322 8FEF      		ldi r24,lo8(-1)
+ 656 0324 8093 0000 		sts fingermapid,r24
+ 657 0328 50E0      		ldi r21,lo8(name)
+ 658 032a C52E      		mov r12,r21
+ 659 032c 50E0      		ldi r21,hi8(name)
+ 660 032e D52E      		mov r13,r21
+ 661 0330 00E0      		ldi r16,lo8(UART0_TxBuf1+5)
+ 662 0332 10E0      		ldi r17,hi8(UART0_TxBuf1+5)
+ 663 0334 CCEF      		ldi r28,lo8(-4)
+ 664 0336 DFEF      		ldi r29,hi8(-4)
+ 665 0338 40E0      		ldi r20,lo8(passwd-4)
+ 666 033a E42E      		mov r14,r20
+ 667 033c 40E0      		ldi r20,hi8(passwd-4)
+ 668 033e F42E      		mov r15,r20
+ 669               	.LVL43:
+ 670               	.L113:
+ 671 0340 9E01      		movw r18,r28
+ 672               	.LVL44:
+ 673 0342 2B5F      		subi r18,lo8(-(5))
+ 674               	.LVL45:
+ 675               	.LM59:
+ 676 0344 2530      		cpi r18,lo8(5)
+ 677 0346 00F4      		brsh .L114
+ 678               	.LM60:
+ 679 0348 F601      		movw r30,r12
+ 680 034a 00C0      		rjmp .L126
+ 681               	.L114:
+ 682               	.LM61:
+ 683 034c 2B30      		cpi r18,lo8(11)
+ 684 034e 00F4      		brsh .L116
+ 685               	.LM62:
+ 686 0350 F701      		movw r30,r14
+ 687               	.L126:
+ 688 0352 8081      		ld r24,Z
+ 689 0354 0E94 0000 		call GetKeyValue
+ 690               	.LVL46:
+ 691 0358 F801      		movw r30,r16
+ 692 035a 8083      		st Z,r24
+ 693               	.LVL47:
+ 694               	.L116:
+ 695 035c 0894      		sec
+ 696 035e C11C      		adc r12,__zero_reg__
+ 697 0360 D11C      		adc r13,__zero_reg__
+ 698 0362 0F5F      		subi r16,lo8(-(1))
+ 699 0364 1F4F      		sbci r17,hi8(-(1))
+ 700 0366 2196      		adiw r28,1
+ 701 0368 0894      		sec
+ 702 036a E11C      		adc r14,__zero_reg__
+ 703 036c F11C      		adc r15,__zero_reg__
+ 704               	.LM63:
+ 705 036e C630      		cpi r28,6
+ 706 0370 D105      		cpc r29,__zero_reg__
+ 707 0372 01F4      		brne .L113
+ 708               	.LM64:
+ 709 0374 60E1      		ldi r22,lo8(16)
+ 710 0376 70E0      		ldi r23,hi8(16)
+ 711 0378 80E0      		ldi r24,lo8(UART0_TxBuf1)
+ 712 037a 90E0      		ldi r25,hi8(UART0_TxBuf1)
+ 713 037c 0E94 0000 		call UART0_write
+ 714               	.LVL48:
+ 715               	.LM65:
+ 716 0380 1092 0000 		sts get_key_count,__zero_reg__
+ 717               	.L110:
+ 718               	.LBE19:
+ 719               	.LM66:
+ 720 0384 8AE0      		ldi r24,lo8(10)
+ 721 0386 90E0      		ldi r25,hi8(10)
+ 722 0388 0E94 0000 		call task_delay
+ 723 038c 00C0      		rjmp .L105
+ 724               	/* epilogue: frame size=0 */
+ 725               	/* epilogue: noreturn */
+ 726               	/* epilogue end (size=0) */
+ 727               	/* function password_authentication size 118 (110) */
+ 728               	.LFE10:
+ 730               	.global	fingermap_modify
+ 732               	fingermap_modify:
+ 733               	.LFB13:
+ 734               	.LM67:
+ 735               	/* prologue: frame size=0 */
+ 736               	/* prologue end (size=0) */
+ 737               	.L129:
+ 738 038e 80E9      		ldi r24,lo8(-12144)
+ 739 0390 90ED      		ldi r25,hi8(-12144)
+ 740               	.LVL49:
+ 741               	.L130:
+ 742               	.LBB20:
+ 743               	.LM68:
+ 744               	/* #APP */
+ 745 0392 0000      		nop
+ 746               		
+ 747 0394 0000      		nop
+ 748               		
+ 749 0396 0000      		nop
+ 750               		
+ 751 0398 0000      		nop
+ 752               		
+ 753               	/* #NOAPP */
+ 754 039a 0197      		sbiw r24,1
+ 755 039c 01F4      		brne .L130
+ 756 039e 80E9      		ldi r24,lo8(-12144)
+ 757 03a0 90ED      		ldi r25,hi8(-12144)
+ 758               	.LVL50:
+ 759               	.L132:
+ 760               	.LBE20:
+ 761               	.LBB21:
+ 762               	.LM69:
+ 763               	/* #APP */
+ 764 03a2 0000      		nop
+ 765               		
+ 766 03a4 0000      		nop
+ 767               		
+ 768 03a6 0000      		nop
+ 769               		
+ 770 03a8 0000      		nop
+ 771               		
+ 772               	/* #NOAPP */
+ 773 03aa 0197      		sbiw r24,1
+ 774 03ac 01F4      		brne .L132
+ 775               	.LBE21:
+ 776               	.LM70:
+ 777 03ae 8091 0000 		lds r24,confirm
+ 778               	.LVL51:
+ 779 03b2 8823      		tst r24
+ 780 03b4 01F4      		brne .+2
+ 781 03b6 00C0      		rjmp .L134
+ 782 03b8 8091 0000 		lds r24,fingermapmodify
+ 783 03bc 8823      		tst r24
+ 784 03be 01F4      		brne .+2
+ 785 03c0 00C0      		rjmp .L134
+ 786               	.LM71:
+ 787 03c2 1092 0000 		sts confirm,__zero_reg__
+ 788               	.LM72:
+ 789 03c6 1092 0000 		sts fingermapmodify,__zero_reg__
+ 790               	.LM73:
+ 791 03ca 8091 0000 		lds r24,userauthed
+ 792 03ce 8823      		tst r24
+ 793 03d0 01F4      		brne .+2
+ 794 03d2 00C0      		rjmp .L137
+ 795               	.LM74:
+ 796 03d4 8091 0000 		lds r24,fingermapid
+ 797 03d8 8F3F      		cpi r24,lo8(-1)
+ 798 03da 01F4      		brne .L139
+ 799               	.LM75:
+ 800 03dc 0E94 0000 		call fingermap_enroll_apl
+ 801 03e0 8823      		tst r24
+ 802 03e2 01F0      		breq .+2
+ 803 03e4 00C0      		rjmp .L134
+ 804               	.LM76:
+ 805 03e6 8091 0000 		lds r24,name
+ 806 03ea 0E94 0000 		call GetKeyValue
+ 807 03ee 8093 0000 		sts UART0_TxBuf5+5,r24
+ 808               	.LM77:
+ 809 03f2 8091 0000 		lds r24,name+1
+ 810 03f6 0E94 0000 		call GetKeyValue
+ 811 03fa 8093 0000 		sts UART0_TxBuf5+6,r24
+ 812               	.LM78:
+ 813 03fe 8091 0000 		lds r24,name+2
+ 814 0402 0E94 0000 		call GetKeyValue
+ 815 0406 8093 0000 		sts UART0_TxBuf5+7,r24
+ 816               	.LM79:
+ 817 040a 8091 0000 		lds r24,name+3
+ 818 040e 0E94 0000 		call GetKeyValue
+ 819 0412 8093 0000 		sts UART0_TxBuf5+8,r24
+ 820               	.LM80:
+ 821 0416 8091 0000 		lds r24,fingermapid
+ 822 041a 8093 0000 		sts UART0_TxBuf5+9,r24
+ 823 041e 00C0      		rjmp .L173
+ 824               	.L139:
+ 825               	.LM81:
+ 826 0420 0E94 0000 		call fingermap_erase_apl
+ 827 0424 892B      		or r24,r25
+ 828 0426 01F0      		breq .+2
+ 829 0428 00C0      		rjmp .L134
+ 830               	.LM82:
+ 831 042a 0E94 0000 		call fingermap_enroll_apl
+ 832 042e 8823      		tst r24
+ 833 0430 01F0      		breq .+2
+ 834 0432 00C0      		rjmp .L134
+ 835               	.LM83:
+ 836 0434 8091 0000 		lds r24,name
+ 837 0438 0E94 0000 		call GetKeyValue
+ 838 043c 8093 0000 		sts UART0_TxBuf5+5,r24
+ 839               	.LM84:
+ 840 0440 8091 0000 		lds r24,name+1
+ 841 0444 0E94 0000 		call GetKeyValue
+ 842 0448 8093 0000 		sts UART0_TxBuf5+6,r24
+ 843               	.LM85:
+ 844 044c 8091 0000 		lds r24,name+2
+ 845 0450 0E94 0000 		call GetKeyValue
+ 846 0454 8093 0000 		sts UART0_TxBuf5+7,r24
+ 847               	.LM86:
+ 848 0458 8091 0000 		lds r24,name+3
+ 849 045c 0E94 0000 		call GetKeyValue
+ 850 0460 8093 0000 		sts UART0_TxBuf5+8,r24
+ 851               	.LM87:
+ 852 0464 8091 0000 		lds r24,fingermapid
+ 853 0468 8093 0000 		sts UART0_TxBuf5+9,r24
+ 854 046c 25E0      		ldi r18,lo8(5)
+ 855               	.LVL52:
+ 856               	.LVL53:
+ 857               	.L144:
+ 858               	.LBB22:
+ 859               	.LM88:
+ 860 046e 8091 6200 		lds r24,98
+ 861               	.LVL54:
+ 862 0472 8860      		ori r24,lo8(8)
+ 863 0474 8093 6200 		sts 98,r24
+ 864 0478 80E1      		ldi r24,lo8(10000)
+ 865 047a 97E2      		ldi r25,hi8(10000)
+ 866               	.LVL55:
+ 867               	.L145:
+ 868               	.LBB23:
+ 869               	/* #APP */
+ 870 047c 0000      		nop
+ 871               		
+ 872 047e 0000      		nop
+ 873               		
+ 874 0480 0000      		nop
+ 875               		
+ 876 0482 0000      		nop
+ 877               		
+ 878               	/* #NOAPP */
+ 879 0484 0197      		sbiw r24,1
+ 880 0486 01F4      		brne .L145
+ 881               	.LBE23:
+ 882 0488 8091 6200 		lds r24,98
+ 883               	.LVL56:
+ 884 048c 877F      		andi r24,lo8(-9)
+ 885 048e 8093 6200 		sts 98,r24
+ 886 0492 80E1      		ldi r24,lo8(10000)
+ 887 0494 97E2      		ldi r25,hi8(10000)
+ 888               	.LVL57:
+ 889               	.L147:
+ 890               	.LBB24:
+ 891               	/* #APP */
+ 892 0496 0000      		nop
+ 893               		
+ 894 0498 0000      		nop
+ 895               		
+ 896 049a 0000      		nop
+ 897               		
+ 898 049c 0000      		nop
+ 899               		
+ 900               	/* #NOAPP */
+ 901 049e 0197      		sbiw r24,1
+ 902 04a0 01F4      		brne .L147
+ 903               	.LBE24:
+ 904 04a2 2150      		subi r18,lo8(-(-1))
+ 905 04a4 01F4      		brne .L144
+ 906               	.L173:
+ 907               	.LBE22:
+ 908               	.LM89:
+ 909 04a6 60E1      		ldi r22,lo8(16)
+ 910 04a8 70E0      		ldi r23,hi8(16)
+ 911 04aa 80E0      		ldi r24,lo8(UART0_TxBuf5)
+ 912 04ac 90E0      		ldi r25,hi8(UART0_TxBuf5)
+ 913               	.LVL58:
+ 914 04ae 0E94 0000 		call UART0_write
+ 915               	.LVL59:
+ 916 04b2 00C0      		rjmp .L134
+ 917               	.L137:
+ 918 04b4 26E0      		ldi r18,lo8(6)
+ 919               	.LVL60:
+ 920               	.LVL61:
+ 921               	.L150:
+ 922               	.LBB25:
+ 923               	.LM90:
+ 924 04b6 8091 6200 		lds r24,98
+ 925               	.LVL62:
+ 926 04ba 8860      		ori r24,lo8(8)
+ 927 04bc 8093 6200 		sts 98,r24
+ 928 04c0 80EA      		ldi r24,lo8(-31072)
+ 929 04c2 96E8      		ldi r25,hi8(-31072)
+ 930               	.LVL63:
+ 931               	.L151:
+ 932               	.LBB26:
+ 933               	/* #APP */
+ 934 04c4 0000      		nop
+ 935               		
+ 936 04c6 0000      		nop
+ 937               		
+ 938 04c8 0000      		nop
+ 939               		
+ 940 04ca 0000      		nop
+ 941               		
+ 942               	/* #NOAPP */
+ 943 04cc 0197      		sbiw r24,1
+ 944 04ce 01F4      		brne .L151
+ 945               	.LBE26:
+ 946 04d0 8091 6200 		lds r24,98
+ 947               	.LVL64:
+ 948 04d4 877F      		andi r24,lo8(-9)
+ 949 04d6 8093 6200 		sts 98,r24
+ 950 04da 80EA      		ldi r24,lo8(-31072)
+ 951 04dc 96E8      		ldi r25,hi8(-31072)
+ 952               	.LVL65:
+ 953               	.L153:
+ 954               	.LBB27:
+ 955               	/* #APP */
+ 956 04de 0000      		nop
+ 957               		
+ 958 04e0 0000      		nop
+ 959               		
+ 960 04e2 0000      		nop
+ 961               		
+ 962 04e4 0000      		nop
+ 963               		
+ 964               	/* #NOAPP */
+ 965 04e6 0197      		sbiw r24,1
+ 966 04e8 01F4      		brne .L153
+ 967               	.LBE27:
+ 968 04ea 2150      		subi r18,lo8(-(-1))
+ 969 04ec 01F4      		brne .L150
+ 970               	.LBE25:
+ 971               	.LM91:
+ 972 04ee 9498      		cbi 50-0x20,4
+ 973               	.LM92:
+ 974 04f0 9598      		cbi 50-0x20,5
+ 975               	.LM93:
+ 976 04f2 9698      		cbi 50-0x20,6
+ 977               	.LM94:
+ 978 04f4 1B98      		cbi 35-0x20,3
+ 979               	.LM95:
+ 980 04f6 8091 6200 		lds r24,98
+ 981               	.LVL66:
+ 982 04fa 8B7F      		andi r24,lo8(-5)
+ 983 04fc 8093 6200 		sts 98,r24
+ 984               	.L134:
+ 985               	.LM96:
+ 986 0500 8AE0      		ldi r24,lo8(10)
+ 987 0502 90E0      		ldi r25,hi8(10)
+ 988 0504 0E94 0000 		call task_delay
+ 989               	.LVL67:
+ 990 0508 00C0      		rjmp .L129
+ 991               	/* epilogue: frame size=0 */
+ 992               	/* epilogue: noreturn */
+ 993               	/* epilogue end (size=0) */
+ 994               	/* function fingermap_modify size 270 (270) */
+ 995               	.LFE13:
+ 997               	.global	fingermap_authentication
+ 999               	fingermap_authentication:
+ 1000               	.LFB12:
+ 1001               	.LM97:
+ 1002               	/* prologue: frame size=0 */
+ 1003               	/* prologue end (size=0) */
+ 1004               	.L176:
+ 1005 050a 80E9      		ldi r24,lo8(-12144)
+ 1006 050c 90ED      		ldi r25,hi8(-12144)
+ 1007               	.LVL68:
+ 1008               	.L177:
+ 1009               	.LBB28:
+ 1010               	.LM98:
+ 1011               	/* #APP */
+ 1012 050e 0000      		nop
+ 1013               		
+ 1014 0510 0000      		nop
+ 1015               		
+ 1016 0512 0000      		nop
+ 1017               		
+ 1018 0514 0000      		nop
+ 1019               		
+ 1020               	/* #NOAPP */
+ 1021 0516 0197      		sbiw r24,1
+ 1022 0518 01F4      		brne .L177
+ 1023 051a 80E9      		ldi r24,lo8(-12144)
+ 1024 051c 90ED      		ldi r25,hi8(-12144)
+ 1025               	.LVL69:
+ 1026               	.L179:
+ 1027               	.LBE28:
+ 1028               	.LBB29:
+ 1029               	.LM99:
+ 1030               	/* #APP */
+ 1031 051e 0000      		nop
+ 1032               		
+ 1033 0520 0000      		nop
+ 1034               		
+ 1035 0522 0000      		nop
+ 1036               		
+ 1037 0524 0000      		nop
+ 1038               		
+ 1039               	/* #NOAPP */
+ 1040 0526 0197      		sbiw r24,1
+ 1041 0528 01F4      		brne .L179
+ 1042               	.LBE29:
+ 1043               	.LM100:
+ 1044 052a 8091 0000 		lds r24,confirm
+ 1045               	.LVL70:
+ 1046 052e 8823      		tst r24
+ 1047 0530 01F0      		breq .L181
+ 1048 0532 8091 0000 		lds r24,fingermapauth
+ 1049 0536 8823      		tst r24
+ 1050 0538 01F0      		breq .L181
+ 1051               	.LM101:
+ 1052 053a 1092 0000 		sts fingermapauth,__zero_reg__
+ 1053               	.LM102:
+ 1054 053e 1092 0000 		sts userauthed,__zero_reg__
+ 1055               	.LM103:
+ 1056 0542 8FEF      		ldi r24,lo8(-1)
+ 1057 0544 8093 0000 		sts fingermapid,r24
+ 1058               	.LM104:
+ 1059 0548 0E94 0000 		call fingermap_auth_apl
+ 1060 054c 8823      		tst r24
+ 1061 054e 01F4      		brne .L184
+ 1062               	.LM105:
+ 1063 0550 1F9A      		sbi 35-0x20,7
+ 1064               	.LM106:
+ 1065 0552 81E0      		ldi r24,lo8(1)
+ 1066 0554 8093 0000 		sts userauthed,r24
+ 1067               	.LM107:
+ 1068 0558 8091 0000 		lds r24,fingermapid
+ 1069 055c 8093 0000 		sts UART0_TxBuf3+5,r24
+ 1070               	.LM108:
+ 1071 0560 60E1      		ldi r22,lo8(16)
+ 1072 0562 70E0      		ldi r23,hi8(16)
+ 1073 0564 80E0      		ldi r24,lo8(UART0_TxBuf3)
+ 1074 0566 90E0      		ldi r25,hi8(UART0_TxBuf3)
+ 1075 0568 00C0      		rjmp .L191
+ 1076               	.L184:
+ 1077               	.LM109:
+ 1078 056a 60E1      		ldi r22,lo8(16)
+ 1079 056c 70E0      		ldi r23,hi8(16)
+ 1080 056e 80E0      		ldi r24,lo8(UART0_TxBuf4)
+ 1081 0570 90E0      		ldi r25,hi8(UART0_TxBuf4)
+ 1082               	.L191:
+ 1083 0572 0E94 0000 		call UART0_write
+ 1084               	.L181:
+ 1085               	.LM110:
+ 1086 0576 8AE0      		ldi r24,lo8(10)
+ 1087 0578 90E0      		ldi r25,hi8(10)
+ 1088 057a 0E94 0000 		call task_delay
+ 1089 057e 00C0      		rjmp .L176
+ 1090               	/* epilogue: frame size=0 */
+ 1091               	/* epilogue: noreturn */
+ 1092               	/* epilogue end (size=0) */
+ 1093               	/* function fingermap_authentication size 85 (85) */
+ 1094               	.LFE12:
+ 1096               	.global	tasks_init
+ 1098               	tasks_init:
+ 1099               	.LFB9:
+ 1100               	.LM111:
+ 1101               	/* prologue: frame size=0 */
+ 1102               	/* prologue end (size=0) */
+ 1103               	.LM112:
+ 1104 0580 1092 0000 		sts passwdauth,__zero_reg__
+ 1105               	.LM113:
+ 1106 0584 1092 0000 		sts passwdmodify,__zero_reg__
+ 1107               	.LM114:
+ 1108 0588 1092 0000 		sts fingermapauth,__zero_reg__
+ 1109               	.LM115:
+ 1110 058c 1092 0000 		sts fingermapmodify,__zero_reg__
+ 1111               	.LM116:
+ 1112 0590 1092 0000 		sts processcommand,__zero_reg__
+ 1113               	.LM117:
+ 1114 0594 8FEF      		ldi r24,lo8(-1)
+ 1115 0596 8093 0000 		sts fingermapid,r24
+ 1116               	.LM118:
+ 1117 059a 1092 0000 		sts confirm,__zero_reg__
+ 1118               	.LM119:
+ 1119 059e 1092 0000 		sts get_key_count,__zero_reg__
+ 1120               	.LM120:
+ 1121 05a2 1092 0000 		sts name,__zero_reg__
+ 1122 05a6 1092 0000 		sts (name)+1,__zero_reg__
+ 1123 05aa 1092 0000 		sts (name)+2,__zero_reg__
+ 1124 05ae 1092 0000 		sts (name)+3,__zero_reg__
+ 1125               	.LM121:
+ 1126 05b2 86E0      		ldi r24,lo8(6)
+ 1127 05b4 E0E0      		ldi r30,lo8(passwd)
+ 1128 05b6 F0E0      		ldi r31,hi8(passwd)
+ 1129 05b8 982F      		mov r25,r24
+ 1130 05ba 1192      		st Z+,__zero_reg__
+ 1131 05bc 9A95      	        dec r25
+ 1132 05be 01F4      		brne .-6
+ 1133               	.LM122:
+ 1134 05c0 E0E0      		ldi r30,lo8(passwd_confirm)
+ 1135 05c2 F0E0      		ldi r31,hi8(passwd_confirm)
+ 1136 05c4 1192      		st Z+,__zero_reg__
+ 1137 05c6 8A95      	        dec r24
+ 1138 05c8 01F4      		brne .-6
+ 1139               	.LM123:
+ 1140 05ca 1092 0000 		sts userauthed,__zero_reg__
+ 1141               	.LM124:
+ 1142 05ce 1F98      		cbi 35-0x20,7
+ 1143               	/* epilogue: frame size=0 */
+ 1144 05d0 0895      		ret
+ 1145               	/* epilogue end (size=1) */
+ 1146               	/* function tasks_init size 41 (40) */
+ 1147               	.LFE9:
+ 1149               	.global	passwdauth
+ 1150               	.global	passwdauth
+ 1151               		.section .bss
+ 1154               	passwdauth:
+ 1155 0000 00        		.skip 1,0
+ 1156               	.global	passwdmodify
+ 1157               	.global	passwdmodify
+ 1160               	passwdmodify:
+ 1161 0001 00        		.skip 1,0
+ 1162               	.global	fingermapauth
+ 1163               	.global	fingermapauth
+ 1166               	fingermapauth:
+ 1167 0002 00        		.skip 1,0
+ 1168               	.global	fingermapmodify
+ 1169               	.global	fingermapmodify
+ 1172               	fingermapmodify:
+ 1173 0003 00        		.skip 1,0
+ 1174               	.global	processcommand
+ 1175               	.global	processcommand
+ 1178               	processcommand:
+ 1179 0004 00        		.skip 1,0
+ 1180               	.global	fingermapid
+ 1181               		.data
+ 1184               	fingermapid:
+ 1185 0000 FF        		.byte	-1
+ 1186               	.global	confirm
+ 1187               	.global	confirm
+ 1188               		.section .bss
+ 1191               	confirm:
+ 1192 0005 00        		.skip 1,0
+ 1193               	.global	get_key_count
+ 1194               	.global	get_key_count
+ 1197               	get_key_count:
+ 1198 0006 00        		.skip 1,0
+ 1199               	.global	userauthed
+ 1200               	.global	userauthed
+ 1203               	userauthed:
+ 1204 0007 00        		.skip 1,0
+ 1205               		.data
+ 1208               	UART0_TxBuf6:
+ 1209 0001 BB        		.byte	-69
+ 1210 0002 FF        		.byte	-1
+ 1211 0003 07        		.byte	7
+ 1212 0004 00        		.byte	0
+ 1213 0005 A7        		.byte	-89
+ 1214 0006 00        		.byte	0
+ 1215 0007 00        		.byte	0
+ 1216 0008 00        		.byte	0
+ 1217 0009 00        		.byte	0
+ 1218 000a 00        		.byte	0
+ 1219 000b 00        		.byte	0
+ 1220 000c 00        		.byte	0
+ 1221 000d 00        		.byte	0
+ 1222 000e 00        		.byte	0
+ 1223 000f 00        		.byte	0
+ 1224 0010 FF        		.byte	-1
+ 1227               	UART0_TxBuf7:
+ 1228 0011 BB        		.byte	-69
+ 1229 0012 FF        		.byte	-1
+ 1230 0013 07        		.byte	7
+ 1231 0014 00        		.byte	0
+ 1232 0015 B7        		.byte	-73
+ 1233 0016 00        		.byte	0
+ 1234 0017 00        		.byte	0
+ 1235 0018 00        		.byte	0
+ 1236 0019 00        		.byte	0
+ 1237 001a 00        		.byte	0
+ 1238 001b 00        		.byte	0
+ 1239 001c 00        		.byte	0
+ 1240 001d 00        		.byte	0
+ 1241 001e 00        		.byte	0
+ 1242 001f 00        		.byte	0
+ 1243 0020 FF        		.byte	-1
+ 1246               	UART0_TxBuf5:
+ 1247 0021 BB        		.byte	-69
+ 1248 0022 FF        		.byte	-1
+ 1249 0023 07        		.byte	7
+ 1250 0024 00        		.byte	0
+ 1251 0025 CE        		.byte	-50
+ 1252 0026 00        		.byte	0
+ 1253 0027 00        		.byte	0
+ 1254 0028 00        		.byte	0
+ 1255 0029 00        		.byte	0
+ 1256 002a 00        		.byte	0
+ 1257 002b 00        		.byte	0
+ 1258 002c 00        		.byte	0
+ 1259 002d 00        		.byte	0
+ 1260 002e 00        		.byte	0
+ 1261 002f 00        		.byte	0
+ 1262 0030 FF        		.byte	-1
+ 1265               	UART0_TxBuf3:
+ 1266 0031 BB        		.byte	-69
+ 1267 0032 FF        		.byte	-1
+ 1268 0033 07        		.byte	7
+ 1269 0034 00        		.byte	0
+ 1270 0035 DA        		.byte	-38
+ 1271 0036 00        		.byte	0
+ 1272 0037 00        		.byte	0
+ 1273 0038 00        		.byte	0
+ 1274 0039 00        		.byte	0
+ 1275 003a 00        		.byte	0
+ 1276 003b 00        		.byte	0
+ 1277 003c 00        		.byte	0
+ 1278 003d 00        		.byte	0
+ 1279 003e 00        		.byte	0
+ 1280 003f 00        		.byte	0
+ 1281 0040 FF        		.byte	-1
+ 1284               	UART0_TxBuf4:
+ 1285 0041 BB        		.byte	-69
+ 1286 0042 FF        		.byte	-1
+ 1287 0043 07        		.byte	7
+ 1288 0044 00        		.byte	0
+ 1289 0045 CF        		.byte	-49
+ 1290 0046 00        		.byte	0
+ 1291 0047 00        		.byte	0
+ 1292 0048 00        		.byte	0
+ 1293 0049 00        		.byte	0
+ 1294 004a 00        		.byte	0
+ 1295 004b 00        		.byte	0
+ 1296 004c 00        		.byte	0
+ 1297 004d 00        		.byte	0
+ 1298 004e 00        		.byte	0
+ 1299 004f 00        		.byte	0
+ 1300 0050 FF        		.byte	-1
+ 1303               	UART0_TxBuf2:
+ 1304 0051 BB        		.byte	-69
+ 1305 0052 FF        		.byte	-1
+ 1306 0053 07        		.byte	7
+ 1307 0054 00        		.byte	0
+ 1308 0055 DB        		.byte	-37
+ 1309 0056 00        		.byte	0
+ 1310 0057 00        		.byte	0
+ 1311 0058 00        		.byte	0
+ 1312 0059 00        		.byte	0
+ 1313 005a 00        		.byte	0
+ 1314 005b 00        		.byte	0
+ 1315 005c 00        		.byte	0
+ 1316 005d 00        		.byte	0
+ 1317 005e 00        		.byte	0
+ 1318 005f 00        		.byte	0
+ 1319 0060 FF        		.byte	-1
+ 1322               	UART0_TxBuf1:
+ 1323 0061 BB        		.byte	-69
+ 1324 0062 FF        		.byte	-1
+ 1325 0063 07        		.byte	7
+ 1326 0064 00        		.byte	0
+ 1327 0065 CC        		.byte	-52
+ 1328 0066 00        		.byte	0
+ 1329 0067 00        		.byte	0
+ 1330 0068 00        		.byte	0
+ 1331 0069 00        		.byte	0
+ 1332 006a 00        		.byte	0
+ 1333 006b 00        		.byte	0
+ 1334 006c 00        		.byte	0
+ 1335 006d 00        		.byte	0
+ 1336 006e 00        		.byte	0
+ 1337 006f 00        		.byte	0
+ 1338 0070 FF        		.byte	-1
+ 1339               		.comm name,4,1
+ 1340               		.comm passwd,6,1
+ 1341               		.comm passwd_confirm,6,1
+ 1406               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 tasks.c
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:20     .text:00000000 process_commands
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1208   .data:00000001 UART0_TxBuf6
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1227   .data:00000011 UART0_TxBuf7
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1203   .bss:00000007 userauthed
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1184   .data:00000000 fingermapid
+                            *COM*:00000004 name
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:287    .text:00000160 password_modify
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1191   .bss:00000005 confirm
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1160   .bss:00000001 passwdmodify
+                            *COM*:00000006 passwd
+                            *COM*:00000006 passwd_confirm
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1303   .data:00000051 UART0_TxBuf2
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1197   .bss:00000006 get_key_count
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:587    .text:000002d6 password_authentication
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1154   .bss:00000000 passwdauth
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1322   .data:00000061 UART0_TxBuf1
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:732    .text:0000038e fingermap_modify
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1172   .bss:00000003 fingermapmodify
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1246   .data:00000021 UART0_TxBuf5
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:999    .text:0000050a fingermap_authentication
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1166   .bss:00000002 fingermapauth
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1265   .data:00000031 UART0_TxBuf3
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1284   .data:00000041 UART0_TxBuf4
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1098   .text:00000580 tasks_init
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccN0ejpG.s:1178   .bss:00000004 processcommand
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+if_receive_a_frame
+Reset_receive_frame
+UART0_read
+UART0_write
+task_delay
+GetKeyValue
+fingermap_enroll_apl
+fingermap_erase_apl
+fingermap_auth_apl

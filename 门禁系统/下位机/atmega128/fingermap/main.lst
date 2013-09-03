@@ -1,0 +1,351 @@
+   1               		.file	"main.c"
+   2               		.arch atmega128
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB3:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 8091 6100 		lds r24,97
+  27 0004 8860      		ori r24,lo8(8)
+  28 0006 8093 6100 		sts 97,r24
+  29 000a 8091 6200 		lds r24,98
+  30 000e 877F      		andi r24,lo8(-9)
+  31 0010 8093 6200 		sts 98,r24
+  32               	.LM3:
+  33 0014 81B3      		in r24,49-0x20
+  34 0016 8067      		ori r24,lo8(112)
+  35 0018 81BB      		out 49-0x20,r24
+  36 001a 82B3      		in r24,50-0x20
+  37 001c 8067      		ori r24,lo8(112)
+  38 001e 82BB      		out 50-0x20,r24
+  39 0020 139A      		sbi 34-0x20,3
+  40 0022 1B9A      		sbi 35-0x20,3
+  41 0024 8091 6100 		lds r24,97
+  42 0028 8460      		ori r24,lo8(4)
+  43 002a 8093 6100 		sts 97,r24
+  44 002e 8091 6200 		lds r24,98
+  45 0032 8460      		ori r24,lo8(4)
+  46 0034 8093 6200 		sts 98,r24
+  47               	.LM4:
+  48 0038 60E0      		ldi r22,lo8(115200)
+  49 003a 72EC      		ldi r23,hi8(115200)
+  50 003c 81E0      		ldi r24,hlo8(115200)
+  51 003e 90E0      		ldi r25,hhi8(115200)
+  52 0040 0E94 0000 		call UART1_InitUART
+  53               	.LM5:
+  54               	/* #APP */
+  55 0044 7894      		sei
+  56               		
+  57               	.LM6:
+  58               	/* #NOAPP */
+  59 0046 0E94 0000 		call fingermap_enroll_apl
+  60               	.LM7:
+  61 004a 9598      		cbi 50-0x20,5
+  62 004c 00C0      		rjmp .L2
+  63               	.L3:
+  64               	.LM8:
+  65 004e 29E0      		ldi r18,lo8(9)
+  66               	.LVL0:
+  67               	.LVL1:
+  68               	.L4:
+  69               	.LBB2:
+  70               	.LM9:
+  71 0050 8091 6200 		lds r24,98
+  72               	.LVL2:
+  73 0054 8860      		ori r24,lo8(8)
+  74 0056 8093 6200 		sts 98,r24
+  75 005a 80E5      		ldi r24,lo8(18000)
+  76 005c 96E4      		ldi r25,hi8(18000)
+  77               	.LVL3:
+  78               	.L5:
+  79               	.LBB3:
+  80               	/* #APP */
+  81 005e 0000      		nop
+  82               		
+  83 0060 0000      		nop
+  84               		
+  85 0062 0000      		nop
+  86               		
+  87 0064 0000      		nop
+  88               		
+  89               	/* #NOAPP */
+  90 0066 0197      		sbiw r24,1
+  91 0068 01F4      		brne .L5
+  92               	.LBE3:
+  93 006a 8091 6200 		lds r24,98
+  94               	.LVL4:
+  95 006e 877F      		andi r24,lo8(-9)
+  96 0070 8093 6200 		sts 98,r24
+  97 0074 80E5      		ldi r24,lo8(18000)
+  98 0076 96E4      		ldi r25,hi8(18000)
+  99               	.LVL5:
+ 100               	.L7:
+ 101               	.LBB4:
+ 102               	/* #APP */
+ 103 0078 0000      		nop
+ 104               		
+ 105 007a 0000      		nop
+ 106               		
+ 107 007c 0000      		nop
+ 108               		
+ 109 007e 0000      		nop
+ 110               		
+ 111               	/* #NOAPP */
+ 112 0080 0197      		sbiw r24,1
+ 113 0082 01F4      		brne .L7
+ 114               	.LBE4:
+ 115 0084 2150      		subi r18,lo8(-(-1))
+ 116 0086 01F4      		brne .L4
+ 117               	.L2:
+ 118               	.LBE2:
+ 119               	.LM10:
+ 120 0088 0E94 0000 		call fingermap_auth_apl
+ 121               	.LVL6:
+ 122 008c 8823      		tst r24
+ 123 008e 01F4      		brne .L3
+ 124               	.LM11:
+ 125 0090 9498      		cbi 50-0x20,4
+ 126 0092 80E2      		ldi r24,lo8(-24288)
+ 127 0094 91EA      		ldi r25,hi8(-24288)
+ 128               	.LVL7:
+ 129               	.L10:
+ 130               	.LBB5:
+ 131               	.LM12:
+ 132               	/* #APP */
+ 133 0096 0000      		nop
+ 134               		
+ 135 0098 0000      		nop
+ 136               		
+ 137 009a 0000      		nop
+ 138               		
+ 139 009c 0000      		nop
+ 140               		
+ 141               	/* #NOAPP */
+ 142 009e 0197      		sbiw r24,1
+ 143 00a0 01F4      		brne .L10
+ 144               	.LBE5:
+ 145               	.LM13:
+ 146 00a2 949A      		sbi 50-0x20,4
+ 147               	.LM14:
+ 148 00a4 959A      		sbi 50-0x20,5
+ 149               	.LM15:
+ 150 00a6 969A      		sbi 50-0x20,6
+ 151               	.LM16:
+ 152 00a8 1B9A      		sbi 35-0x20,3
+ 153               	.LM17:
+ 154 00aa 8091 6200 		lds r24,98
+ 155               	.LVL8:
+ 156 00ae 8460      		ori r24,lo8(4)
+ 157 00b0 8093 6200 		sts 98,r24
+ 158               	.LM18:
+ 159 00b4 8091 0000 		lds r24,fingermap_id
+ 160 00b8 0E94 0000 		call fingermap_erase_apl
+ 161 00bc 892B      		or r24,r25
+ 162 00be 01F0      		breq .+2
+ 163 00c0 00C0      		rjmp .L52
+ 164               	.LM19:
+ 165 00c2 8091 6200 		lds r24,98
+ 166 00c6 8B7F      		andi r24,lo8(-5)
+ 167 00c8 8093 6200 		sts 98,r24
+ 168 00cc 25E0      		ldi r18,lo8(5)
+ 169               	.LVL9:
+ 170               	.LVL10:
+ 171               	.L14:
+ 172               	.LBB6:
+ 173               	.LM20:
+ 174 00ce 8091 6200 		lds r24,98
+ 175               	.LVL11:
+ 176 00d2 8860      		ori r24,lo8(8)
+ 177 00d4 8093 6200 		sts 98,r24
+ 178 00d8 80E1      		ldi r24,lo8(10000)
+ 179 00da 97E2      		ldi r25,hi8(10000)
+ 180               	.LVL12:
+ 181               	.L15:
+ 182               	.LBB7:
+ 183               	/* #APP */
+ 184 00dc 0000      		nop
+ 185               		
+ 186 00de 0000      		nop
+ 187               		
+ 188 00e0 0000      		nop
+ 189               		
+ 190 00e2 0000      		nop
+ 191               		
+ 192               	/* #NOAPP */
+ 193 00e4 0197      		sbiw r24,1
+ 194 00e6 01F4      		brne .L15
+ 195               	.LBE7:
+ 196 00e8 8091 6200 		lds r24,98
+ 197               	.LVL13:
+ 198 00ec 877F      		andi r24,lo8(-9)
+ 199 00ee 8093 6200 		sts 98,r24
+ 200 00f2 80E1      		ldi r24,lo8(10000)
+ 201 00f4 97E2      		ldi r25,hi8(10000)
+ 202               	.LVL14:
+ 203               	.L17:
+ 204               	.LBB8:
+ 205               	/* #APP */
+ 206 00f6 0000      		nop
+ 207               		
+ 208 00f8 0000      		nop
+ 209               		
+ 210 00fa 0000      		nop
+ 211               		
+ 212 00fc 0000      		nop
+ 213               		
+ 214               	/* #NOAPP */
+ 215 00fe 0197      		sbiw r24,1
+ 216 0100 01F4      		brne .L17
+ 217               	.LBE8:
+ 218 0102 2150      		subi r18,lo8(-(-1))
+ 219 0104 01F0      		breq .L52
+ 220 0106 00C0      		rjmp .L14
+ 221               	.LVL15:
+ 222               	.L19:
+ 223 0108 29E0      		ldi r18,lo8(9)
+ 224               	.LVL16:
+ 225               	.LVL17:
+ 226               	.L20:
+ 227               	.LBE6:
+ 228               	.LBB9:
+ 229               	.LM21:
+ 230 010a 8091 6200 		lds r24,98
+ 231               	.LVL18:
+ 232 010e 8860      		ori r24,lo8(8)
+ 233 0110 8093 6200 		sts 98,r24
+ 234 0114 80E5      		ldi r24,lo8(18000)
+ 235 0116 96E4      		ldi r25,hi8(18000)
+ 236               	.LVL19:
+ 237               	.L21:
+ 238               	.LBB10:
+ 239               	/* #APP */
+ 240 0118 0000      		nop
+ 241               		
+ 242 011a 0000      		nop
+ 243               		
+ 244 011c 0000      		nop
+ 245               		
+ 246 011e 0000      		nop
+ 247               		
+ 248               	/* #NOAPP */
+ 249 0120 0197      		sbiw r24,1
+ 250 0122 01F4      		brne .L21
+ 251               	.LBE10:
+ 252 0124 8091 6200 		lds r24,98
+ 253               	.LVL20:
+ 254 0128 877F      		andi r24,lo8(-9)
+ 255 012a 8093 6200 		sts 98,r24
+ 256 012e 80E5      		ldi r24,lo8(18000)
+ 257 0130 96E4      		ldi r25,hi8(18000)
+ 258               	.LVL21:
+ 259               	.L23:
+ 260               	.LBB11:
+ 261               	/* #APP */
+ 262 0132 0000      		nop
+ 263               		
+ 264 0134 0000      		nop
+ 265               		
+ 266 0136 0000      		nop
+ 267               		
+ 268 0138 0000      		nop
+ 269               		
+ 270               	/* #NOAPP */
+ 271 013a 0197      		sbiw r24,1
+ 272 013c 01F4      		brne .L23
+ 273               	.LBE11:
+ 274 013e 2150      		subi r18,lo8(-(-1))
+ 275 0140 01F4      		brne .L20
+ 276               	.LVL22:
+ 277               	.L52:
+ 278               	.LBE9:
+ 279               	.LM22:
+ 280 0142 0E94 0000 		call fingermap_auth_apl
+ 281               	.LVL23:
+ 282 0146 8823      		tst r24
+ 283 0148 01F4      		brne .L19
+ 284               	.LM23:
+ 285 014a 9498      		cbi 50-0x20,4
+ 286               	.LVL24:
+ 287               	.L26:
+ 288               	.LM24:
+ 289 014c 8091 6200 		lds r24,98
+ 290               	.LVL25:
+ 291 0150 8B7F      		andi r24,lo8(-5)
+ 292 0152 8093 6200 		sts 98,r24
+ 293 0156 80E5      		ldi r24,lo8(-15536)
+ 294 0158 93EC      		ldi r25,hi8(-15536)
+ 295               	.LVL26:
+ 296               	.L27:
+ 297               	.LBB12:
+ 298               	.LM25:
+ 299               	/* #APP */
+ 300 015a 0000      		nop
+ 301               		
+ 302 015c 0000      		nop
+ 303               		
+ 304 015e 0000      		nop
+ 305               		
+ 306 0160 0000      		nop
+ 307               		
+ 308               	/* #NOAPP */
+ 309 0162 0197      		sbiw r24,1
+ 310 0164 01F4      		brne .L27
+ 311               	.LBE12:
+ 312               	.LM26:
+ 313 0166 8091 6200 		lds r24,98
+ 314               	.LVL27:
+ 315 016a 8460      		ori r24,lo8(4)
+ 316 016c 8093 6200 		sts 98,r24
+ 317 0170 80E5      		ldi r24,lo8(-15536)
+ 318 0172 93EC      		ldi r25,hi8(-15536)
+ 319               	.LVL28:
+ 320               	.L29:
+ 321               	.LBB13:
+ 322               	.LM27:
+ 323               	/* #APP */
+ 324 0174 0000      		nop
+ 325               		
+ 326 0176 0000      		nop
+ 327               		
+ 328 0178 0000      		nop
+ 329               		
+ 330 017a 0000      		nop
+ 331               		
+ 332               	/* #NOAPP */
+ 333 017c 0197      		sbiw r24,1
+ 334 017e 01F4      		brne .L29
+ 335 0180 00C0      		rjmp .L26
+ 336               	.LBE13:
+ 337               	/* epilogue: frame size=0 */
+ 338               	/* epilogue: noreturn */
+ 339               	/* epilogue end (size=0) */
+ 340               	/* function main size 316 (316) */
+ 341               	.LFE3:
+ 367               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\jszx\LOCALS~1\Temp/cc2Hv21y.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/cc2Hv21y.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/cc2Hv21y.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/cc2Hv21y.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/cc2Hv21y.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/cc2Hv21y.s:20     .text:00000000 main
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+UART1_InitUART
+fingermap_enroll_apl
+fingermap_auth_apl
+fingermap_id
+fingermap_erase_apl

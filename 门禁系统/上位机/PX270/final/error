@@ -1,0 +1,29 @@
+mainform.o: In function `gprs_init':
+mainform.cpp:(.text+0x24): undefined reference to `tty_writecmd'
+mainform.o: In function `gprs_hold':
+mainform.cpp:(.text+0x44): undefined reference to `tty_writecmd'
+mainform.cpp:(.text+0x54): undefined reference to `tty_writecmd'
+mainform.o: In function `gprs_ans':
+mainform.cpp:(.text+0x6c): undefined reference to `tty_writecmd'
+mainform.cpp:(.text+0x7c): undefined reference to `tty_writecmd'
+mainform.o: In function `gprs_call':
+mainform.cpp:(.text+0xa4): undefined reference to `tty_write'
+mainform.cpp:(.text+0xb8): undefined reference to `tty_write'
+mainform.cpp:(.text+0xc4): undefined reference to `tty_write'
+mainform.o: In function `gprs_msg':
+mainform.cpp:(.text+0x12c): undefined reference to `tty_writecmd'
+mainform.cpp:(.text+0x144): undefined reference to `tty_writecmd'
+mainform.cpp:(.text+0x154): undefined reference to `tty_writecmd'
+mainform.cpp:(.text+0x160): undefined reference to `tty_write'
+mainform.cpp:(.text+0x16c): undefined reference to `tty_write'
+mainform.cpp:(.text+0x180): undefined reference to `tty_write'
+mainform.cpp:(.text+0x18c): undefined reference to `tty_write'
+mainform.cpp:(.text+0x198): undefined reference to `tty_write'
+mainform.o:mainform.cpp:(.text+0x1ac): more undefined references to `tty_write'
+follow
+mainform.o: In function `gprs_baud':
+mainform.cpp:(.text+0x218): undefined reference to `tty_writecmd'
+mainform.o: In function `mainForm::init()':
+mainform.cpp:(.text+0x2318): undefined reference to `tty_init'
+mainform.o: In function `mainForm::destroy()':
+mainform.cpp:(.text+0x2370): undefined reference to `tty_end'

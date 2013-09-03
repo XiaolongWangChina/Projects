@@ -1,0 +1,41 @@
+
+用户号和密码：
+例如：
+用户号: "1234"      ---  1234     ---  0x4d2
+密码  ："999999"    ---  999999   ---  0xf423f
+		|					|			|
+		|					|			|
+		|					|			|
+		用户输入			存储		传送
+		界面显示
+
+
+
+下位机发过来的用户号和密码是编码后的形式（0x4d2,0xf423f）。
+用MAKE_USER_ID ，MAKE_USER_PASSWORD 宏将其转为整数值。
+验证过程用的是这个数字。
+
+
+数据存储：
+	数据存放在内存。
+	以数组形式存放。
+
+typedef struct userInfoInNum{
+	short uid;
+	int passwd;
+	char fgNum;
+} user_Info_Store_t;
+
+//存放用户信息的数组。
+user_Info_Store_t array[64];
+	
+	
+	
+	
+	
+	//fd = open("/root/myFile/myCode_debug/S485.txt", O_RDONLY| O_NONBLOCK );
+	//fd_out = open("/root/myFile/myCode_debug/S485output.txt", O_WRONLY| O_NONBLOCK );
+	//printf("fd = %d\n",fd);
+	//printf("fd_out = %d\n",fd_out);
+	
+	

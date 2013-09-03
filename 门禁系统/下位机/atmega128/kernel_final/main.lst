@@ -1,0 +1,157 @@
+   1               		.file	"main.c"
+   2               		.arch atmega128
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	main
+  20               	main:
+  21               	.LFB9:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 A1E6      		ldi r26,lo8(97)
+  27 0002 B0E0      		ldi r27,hi8(97)
+  28 0004 8C91      		ld r24,X
+  29 0006 8860      		ori r24,lo8(8)
+  30 0008 8C93      		st X,r24
+  31 000a E2E6      		ldi r30,lo8(98)
+  32 000c F0E0      		ldi r31,hi8(98)
+  33 000e 8081      		ld r24,Z
+  34 0010 877F      		andi r24,lo8(-9)
+  35 0012 8083      		st Z,r24
+  36               	.LM3:
+  37 0014 179A      		sbi 34-0x20,7
+  38 0016 1598      		cbi 34-0x20,5
+  39 0018 1F9A      		sbi 35-0x20,7
+  40               	.LM4:
+  41 001a 81B3      		in r24,49-0x20
+  42 001c 8067      		ori r24,lo8(112)
+  43 001e 81BB      		out 49-0x20,r24
+  44 0020 82B3      		in r24,50-0x20
+  45 0022 8067      		ori r24,lo8(112)
+  46 0024 82BB      		out 50-0x20,r24
+  47 0026 139A      		sbi 34-0x20,3
+  48 0028 1B9A      		sbi 35-0x20,3
+  49 002a 8C91      		ld r24,X
+  50 002c 8460      		ori r24,lo8(4)
+  51 002e 8C93      		st X,r24
+  52 0030 8081      		ld r24,Z
+  53 0032 8460      		ori r24,lo8(4)
+  54 0034 8083      		st Z,r24
+  55               	.LM5:
+  56 0036 60E0      		ldi r22,lo8(230400)
+  57 0038 74E8      		ldi r23,hi8(230400)
+  58 003a 83E0      		ldi r24,hlo8(230400)
+  59 003c 90E0      		ldi r25,hhi8(230400)
+  60 003e 0E94 0000 		call UART0_InitUART
+  61               	.LM6:
+  62 0042 60E0      		ldi r22,lo8(115200)
+  63 0044 72EC      		ldi r23,hi8(115200)
+  64 0046 81E0      		ldi r24,hlo8(115200)
+  65 0048 90E0      		ldi r25,hhi8(115200)
+  66 004a 0E94 0000 		call UART1_InitUART
+  67               	.LM7:
+  68 004e 0E94 0000 		call keyboard_init
+  69               	.LM8:
+  70 0052 0E94 0000 		call TickInit
+  71               	.LM9:
+  72 0056 0E94 0000 		call Tick0Init
+  73               	.LM10:
+  74 005a 1F98      		cbi 35-0x20,7
+  75               	.LM11:
+  76               	/* #APP */
+  77 005c 7894      		sei
+  78               		
+  79               	.LM12:
+  80               	/* #NOAPP */
+  81 005e 2224      		clr r2
+  82               	.LM13:
+  83 0060 3324      		clr r3
+  84               	.LM14:
+  85 0062 40E0      		ldi r20,lo8(0)
+  86 0064 60E0      		ldi r22,lo8(stack+99)
+  87 0066 70E0      		ldi r23,hi8(stack+99)
+  88 0068 80E0      		ldi r24,lo8(gs(password_authentication))
+  89 006a 90E0      		ldi r25,hi8(gs(password_authentication))
+  90 006c 0E94 0000 		call task_create
+  91               	.LM15:
+  92 0070 41E0      		ldi r20,lo8(1)
+  93 0072 60E0      		ldi r22,lo8(stack+199)
+  94 0074 70E0      		ldi r23,hi8(stack+199)
+  95 0076 80E0      		ldi r24,lo8(gs(password_modify))
+  96 0078 90E0      		ldi r25,hi8(gs(password_modify))
+  97 007a 0E94 0000 		call task_create
+  98               	.LM16:
+  99 007e 42E0      		ldi r20,lo8(2)
+ 100 0080 60E0      		ldi r22,lo8(stack+299)
+ 101 0082 70E0      		ldi r23,hi8(stack+299)
+ 102 0084 80E0      		ldi r24,lo8(gs(fingermap_authentication))
+ 103 0086 90E0      		ldi r25,hi8(gs(fingermap_authentication))
+ 104 0088 0E94 0000 		call task_create
+ 105               	.LM17:
+ 106 008c 43E0      		ldi r20,lo8(3)
+ 107 008e 60E0      		ldi r22,lo8(stack+399)
+ 108 0090 70E0      		ldi r23,hi8(stack+399)
+ 109 0092 80E0      		ldi r24,lo8(gs(fingermap_modify))
+ 110 0094 90E0      		ldi r25,hi8(gs(fingermap_modify))
+ 111 0096 0E94 0000 		call task_create
+ 112               	.LM18:
+ 113 009a 44E0      		ldi r20,lo8(4)
+ 114 009c 60E0      		ldi r22,lo8(stack+499)
+ 115 009e 70E0      		ldi r23,hi8(stack+499)
+ 116 00a0 80E0      		ldi r24,lo8(gs(process_commands))
+ 117 00a2 90E0      		ldi r25,hi8(gs(process_commands))
+ 118 00a4 0E94 0000 		call task_create
+ 119               	.LM19:
+ 120 00a8 45E0      		ldi r20,lo8(5)
+ 121 00aa 60E0      		ldi r22,lo8(stack+599)
+ 122 00ac 70E0      		ldi r23,hi8(stack+599)
+ 123 00ae 80E0      		ldi r24,lo8(gs(scheduler))
+ 124 00b0 90E0      		ldi r25,hi8(gs(scheduler))
+ 125 00b2 0E94 0000 		call task_create
+ 126               	.LM20:
+ 127 00b6 0E94 0000 		call start_schedule
+ 128               	.LM21:
+ 129 00ba 80E0      		ldi r24,lo8(0)
+ 130 00bc 90E0      		ldi r25,hi8(0)
+ 131               	/* epilogue: frame size=0 */
+ 132 00be 0895      		ret
+ 133               	/* epilogue end (size=1) */
+ 134               	/* function main size 99 (98) */
+ 135               	.LFE9:
+ 137               		.comm tcb,24,1
+ 138               		.comm stack,600,1
+ 163               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccuZwmkL.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccuZwmkL.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccuZwmkL.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccuZwmkL.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccuZwmkL.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccuZwmkL.s:20     .text:00000000 main
+                            *COM*:00000258 stack
+                            *COM*:00000018 tcb
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+UART0_InitUART
+UART1_InitUART
+keyboard_init
+TickInit
+Tick0Init
+password_authentication
+task_create
+password_modify
+fingermap_authentication
+fingermap_modify
+process_commands
+scheduler
+start_schedule

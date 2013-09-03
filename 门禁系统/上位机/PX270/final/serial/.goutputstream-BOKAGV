@@ -1,0 +1,13 @@
+#include <unistd.h>
+#include <stdlib.h> 
+//#include <linux/spinlock.h>
+#include "myTty.h"
+
+#define BAUDRATE B230400
+
+#define COM2 "/dev/ttyS2" 
+
+
+
+
+/*

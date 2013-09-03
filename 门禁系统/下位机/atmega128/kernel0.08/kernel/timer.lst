@@ -1,0 +1,371 @@
+   1               		.file	"timer.c"
+   2               		.arch atmega128
+   3               	__SREG__ = 0x3f
+   4               	__SP_H__ = 0x3e
+   5               	__SP_L__ = 0x3d
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  17               	.Ltext0:
+  18               	.global	TickInit
+  20               	TickInit:
+  21               	.LFB9:
+  22               	.LM1:
+  23               	/* prologue: frame size=0 */
+  24               	/* prologue end (size=0) */
+  25               	.LM2:
+  26 0000 1EBC      		out 78-0x20,__zero_reg__
+  27               	.LM3:
+  28 0002 1092 0000 		sts TickCount,__zero_reg__
+  29 0006 1092 0000 		sts (TickCount)+1,__zero_reg__
+  30 000a 1092 0000 		sts (TickCount)+2,__zero_reg__
+  31 000e 1092 0000 		sts (TickCount)+3,__zero_reg__
+  32               	.LM4:
+  33 0012 8FED      		ldi r24,lo8(-33)
+  34 0014 8CBD      		out 76-0x20,r24
+  35               	.LM5:
+  36 0016 81EB      		ldi r24,lo8(-79)
+  37 0018 8DBD      		out 77-0x20,r24
+  38               	.LM6:
+  39 001a 87B7      		in r24,87-0x20
+  40 001c 8460      		ori r24,lo8(4)
+  41 001e 87BF      		out 87-0x20,r24
+  42               	.LM7:
+  43 0020 1FBC      		out 79-0x20,__zero_reg__
+  44               	.LM8:
+  45 0022 82E0      		ldi r24,lo8(2)
+  46 0024 8EBD      		out 78-0x20,r24
+  47               	/* epilogue: frame size=0 */
+  48 0026 0895      		ret
+  49               	/* epilogue end (size=1) */
+  50               	/* function TickInit size 20 (19) */
+  51               	.LFE9:
+  53               	.global	TickGet
+  55               	TickGet:
+  56               	.LFB11:
+  57               	.LM9:
+  58               	/* prologue: frame size=0 */
+  59               	/* prologue end (size=0) */
+  60               	.LM10:
+  61 0028 87B7      		in r24,87-0x20
+  62 002a 8B7F      		andi r24,lo8(-5)
+  63 002c 87BF      		out 87-0x20,r24
+  64               	.LM11:
+  65 002e 87B7      		in r24,87-0x20
+  66 0030 8460      		ori r24,lo8(4)
+  67 0032 87BF      		out 87-0x20,r24
+  68 0034 6091 0000 		lds r22,TickCount
+  69 0038 7091 0000 		lds r23,(TickCount)+1
+  70 003c 8091 0000 		lds r24,(TickCount)+2
+  71 0040 9091 0000 		lds r25,(TickCount)+3
+  72               	/* epilogue: frame size=0 */
+  73 0044 0895      		ret
+  74               	/* epilogue end (size=1) */
+  75               	/* function TickGet size 15 (14) */
+  76               	.LFE11:
+  78               	.global	TickUpdate
+  80               	TickUpdate:
+  81               	.LFB12:
+  82               	.LM12:
+  83               	/* prologue: frame size=0 */
+  84               	/* prologue end (size=0) */
+  85               	.LM13:
+  86 0046 81EB      		ldi r24,lo8(-79)
+  87 0048 8DBD      		out 77-0x20,r24
+  88               	.LM14:
+  89 004a 8FED      		ldi r24,lo8(-33)
+  90 004c 8CBD      		out 76-0x20,r24
+  91               	.LM15:
+  92 004e 8091 0000 		lds r24,TickCount
+  93 0052 9091 0000 		lds r25,(TickCount)+1
+  94 0056 A091 0000 		lds r26,(TickCount)+2
+  95 005a B091 0000 		lds r27,(TickCount)+3
+  96 005e 0196      		adiw r24,1
+  97 0060 A11D      		adc r26,__zero_reg__
+  98 0062 B11D      		adc r27,__zero_reg__
+  99 0064 8093 0000 		sts TickCount,r24
+ 100 0068 9093 0000 		sts (TickCount)+1,r25
+ 101 006c A093 0000 		sts (TickCount)+2,r26
+ 102 0070 B093 0000 		sts (TickCount)+3,r27
+ 103               	/* epilogue: frame size=0 */
+ 104 0074 0895      		ret
+ 105               	/* epilogue end (size=1) */
+ 106               	/* function TickUpdate size 24 (23) */
+ 107               	.LFE12:
+ 109               	.global	TickDisable
+ 111               	TickDisable:
+ 112               	.LFB13:
+ 113               	.LM16:
+ 114               	/* prologue: frame size=0 */
+ 115               	/* prologue end (size=0) */
+ 116               	.LM17:
+ 117 0076 87B7      		in r24,87-0x20
+ 118 0078 8B7F      		andi r24,lo8(-5)
+ 119 007a 87BF      		out 87-0x20,r24
+ 120               	/* epilogue: frame size=0 */
+ 121 007c 0895      		ret
+ 122               	/* epilogue end (size=1) */
+ 123               	/* function TickDisable size 4 (3) */
+ 124               	.LFE13:
+ 126               	.global	TickEnable
+ 128               	TickEnable:
+ 129               	.LFB14:
+ 130               	.LM18:
+ 131               	/* prologue: frame size=0 */
+ 132               	/* prologue end (size=0) */
+ 133               	.LM19:
+ 134 007e 87B7      		in r24,87-0x20
+ 135 0080 8460      		ori r24,lo8(4)
+ 136 0082 87BF      		out 87-0x20,r24
+ 137               	/* epilogue: frame size=0 */
+ 138 0084 0895      		ret
+ 139               	/* epilogue end (size=1) */
+ 140               	/* function TickEnable size 4 (3) */
+ 141               	.LFE14:
+ 143               	.global	Tick0Init
+ 145               	Tick0Init:
+ 146               	.LFB15:
+ 147               	.LM20:
+ 148               	/* prologue: frame size=0 */
+ 149               	/* prologue end (size=0) */
+ 150               	.LM21:
+ 151 0086 13BE      		out 83-0x20,__zero_reg__
+ 152               	.LM22:
+ 153 0088 83B7      		in r24,83-0x20
+ 154 008a 8460      		ori r24,lo8(4)
+ 155 008c 83BF      		out 83-0x20,r24
+ 156               	.LM23:
+ 157 008e 87B7      		in r24,87-0x20
+ 158 0090 8160      		ori r24,lo8(1)
+ 159 0092 87BF      		out 87-0x20,r24
+ 160               	.LM24:
+ 161 0094 84E6      		ldi r24,lo8(100)
+ 162 0096 82BF      		out 82-0x20,r24
+ 163               	/* epilogue: frame size=0 */
+ 164 0098 0895      		ret
+ 165               	/* epilogue end (size=1) */
+ 166               	/* function Tick0Init size 10 (9) */
+ 167               	.LFE15:
+ 169               	.global	__vector_16
+ 171               	__vector_16:
+ 172               	.LFB16:
+ 173               	.LM25:
+ 174               	/* prologue: frame size=0 */
+ 175 009a 1F92      		push __zero_reg__
+ 176 009c 0F92      		push __tmp_reg__
+ 177 009e 0FB6      		in __tmp_reg__,__SREG__
+ 178 00a0 0F92      		push __tmp_reg__
+ 179 00a2 1124      		clr __zero_reg__
+ 180 00a4 2F93      		push r18
+ 181 00a6 3F93      		push r19
+ 182 00a8 4F93      		push r20
+ 183 00aa 5F93      		push r21
+ 184 00ac 6F93      		push r22
+ 185 00ae 7F93      		push r23
+ 186 00b0 8F93      		push r24
+ 187 00b2 9F93      		push r25
+ 188 00b4 AF93      		push r26
+ 189 00b6 BF93      		push r27
+ 190 00b8 EF93      		push r30
+ 191 00ba FF93      		push r31
+ 192               	/* prologue end (size=17) */
+ 193               	.LM26:
+ 194 00bc 0E94 0000 		call update_ticks
+ 195               	.LM27:
+ 196 00c0 84E6      		ldi r24,lo8(100)
+ 197 00c2 82BF      		out 82-0x20,r24
+ 198               	/* epilogue: frame size=0 */
+ 199 00c4 FF91      		pop r31
+ 200 00c6 EF91      		pop r30
+ 201 00c8 BF91      		pop r27
+ 202 00ca AF91      		pop r26
+ 203 00cc 9F91      		pop r25
+ 204 00ce 8F91      		pop r24
+ 205 00d0 7F91      		pop r23
+ 206 00d2 6F91      		pop r22
+ 207 00d4 5F91      		pop r21
+ 208 00d6 4F91      		pop r20
+ 209 00d8 3F91      		pop r19
+ 210 00da 2F91      		pop r18
+ 211 00dc 0F90      		pop __tmp_reg__
+ 212 00de 0FBE      		out __SREG__,__tmp_reg__
+ 213 00e0 0F90      		pop __tmp_reg__
+ 214 00e2 1F90      		pop __zero_reg__
+ 215 00e4 1895      		reti
+ 216               	/* epilogue end (size=17) */
+ 217               	/* function __vector_16 size 38 (4) */
+ 218               	.LFE16:
+ 220               	.global	__vector_14
+ 222               	__vector_14:
+ 223               	.LFB10:
+ 224               	.LM28:
+ 225               	/* prologue: frame size=0 */
+ 226 00e6 1F92      		push __zero_reg__
+ 227 00e8 0F92      		push __tmp_reg__
+ 228 00ea 0FB6      		in __tmp_reg__,__SREG__
+ 229 00ec 0F92      		push __tmp_reg__
+ 230 00ee 1124      		clr __zero_reg__
+ 231 00f0 2F93      		push r18
+ 232 00f2 3F93      		push r19
+ 233 00f4 4F93      		push r20
+ 234 00f6 5F93      		push r21
+ 235 00f8 6F93      		push r22
+ 236 00fa 7F93      		push r23
+ 237 00fc 8F93      		push r24
+ 238 00fe 9F93      		push r25
+ 239 0100 AF93      		push r26
+ 240 0102 BF93      		push r27
+ 241 0104 EF93      		push r30
+ 242 0106 FF93      		push r31
+ 243               	/* prologue end (size=17) */
+ 244               	.LBB9:
+ 245               	.LBB10:
+ 246               	.LM29:
+ 247 0108 81EB      		ldi r24,lo8(-79)
+ 248 010a 8DBD      		out 77-0x20,r24
+ 249               	.LM30:
+ 250 010c 8FED      		ldi r24,lo8(-33)
+ 251 010e 8CBD      		out 76-0x20,r24
+ 252               	.LM31:
+ 253 0110 8091 0000 		lds r24,TickCount
+ 254 0114 9091 0000 		lds r25,(TickCount)+1
+ 255 0118 A091 0000 		lds r26,(TickCount)+2
+ 256 011c B091 0000 		lds r27,(TickCount)+3
+ 257 0120 0196      		adiw r24,1
+ 258 0122 A11D      		adc r26,__zero_reg__
+ 259 0124 B11D      		adc r27,__zero_reg__
+ 260 0126 8093 0000 		sts TickCount,r24
+ 261 012a 9093 0000 		sts (TickCount)+1,r25
+ 262 012e A093 0000 		sts (TickCount)+2,r26
+ 263 0132 B093 0000 		sts (TickCount)+3,r27
+ 264               	.LBE10:
+ 265               	.LBE9:
+ 266               	.LM32:
+ 267 0136 8858      		subi r24,lo8(5000)
+ 268 0138 9341      		sbci r25,hi8(5000)
+ 269 013a A040      		sbci r26,hlo8(5000)
+ 270 013c B040      		sbci r27,hhi8(5000)
+ 271 013e 00F4      		brsh .+2
+ 272 0140 00C0      		rjmp .L24
+ 273               	.LM33:
+ 274 0142 0E94 0000 		call tasks_init
+ 275               	.LM34:
+ 276 0146 1092 0000 		sts TickCount,__zero_reg__
+ 277 014a 1092 0000 		sts (TickCount)+1,__zero_reg__
+ 278 014e 1092 0000 		sts (TickCount)+2,__zero_reg__
+ 279 0152 1092 0000 		sts (TickCount)+3,__zero_reg__
+ 280 0156 22E0      		ldi r18,lo8(2)
+ 281               	.LVL0:
+ 282               	.LVL1:
+ 283               	.L18:
+ 284               	.LBB11:
+ 285               	.LM35:
+ 286 0158 8091 6200 		lds r24,98
+ 287               	.LVL2:
+ 288 015c 8860      		ori r24,lo8(8)
+ 289 015e 8093 6200 		sts 98,r24
+ 290 0162 84E1      		ldi r24,lo8(-11244)
+ 291 0164 94ED      		ldi r25,hi8(-11244)
+ 292               	.LVL3:
+ 293               	.L19:
+ 294               	.LBB12:
+ 295               	/* #APP */
+ 296 0166 0000      		nop
+ 297               		
+ 298 0168 0000      		nop
+ 299               		
+ 300 016a 0000      		nop
+ 301               		
+ 302 016c 0000      		nop
+ 303               		
+ 304               	/* #NOAPP */
+ 305 016e 0197      		sbiw r24,1
+ 306 0170 01F4      		brne .L19
+ 307               	.LBE12:
+ 308 0172 8091 6200 		lds r24,98
+ 309               	.LVL4:
+ 310 0176 877F      		andi r24,lo8(-9)
+ 311 0178 8093 6200 		sts 98,r24
+ 312 017c 84E1      		ldi r24,lo8(-11244)
+ 313 017e 94ED      		ldi r25,hi8(-11244)
+ 314               	.LVL5:
+ 315               	.L21:
+ 316               	.LBB13:
+ 317               	/* #APP */
+ 318 0180 0000      		nop
+ 319               		
+ 320 0182 0000      		nop
+ 321               		
+ 322 0184 0000      		nop
+ 323               		
+ 324 0186 0000      		nop
+ 325               		
+ 326               	/* #NOAPP */
+ 327 0188 0197      		sbiw r24,1
+ 328 018a 01F4      		brne .L21
+ 329               	.LBE13:
+ 330 018c 2150      		subi r18,lo8(-(-1))
+ 331 018e 01F4      		brne .L18
+ 332               	.LBE11:
+ 333               	.LBB14:
+ 334               	.LBB15:
+ 335               	.LM36:
+ 336 0190 87B7      		in r24,87-0x20
+ 337               	.LVL6:
+ 338 0192 8B7F      		andi r24,lo8(-5)
+ 339 0194 87BF      		out 87-0x20,r24
+ 340               	.L24:
+ 341               	.LBE15:
+ 342               	.LBE14:
+ 343               	/* epilogue: frame size=0 */
+ 344 0196 FF91      		pop r31
+ 345 0198 EF91      		pop r30
+ 346 019a BF91      		pop r27
+ 347 019c AF91      		pop r26
+ 348 019e 9F91      		pop r25
+ 349 01a0 8F91      		pop r24
+ 350 01a2 7F91      		pop r23
+ 351 01a4 6F91      		pop r22
+ 352 01a6 5F91      		pop r21
+ 353 01a8 4F91      		pop r20
+ 354 01aa 3F91      		pop r19
+ 355 01ac 2F91      		pop r18
+ 356 01ae 0F90      		pop __tmp_reg__
+ 357 01b0 0FBE      		out __SREG__,__tmp_reg__
+ 358 01b2 0F90      		pop __tmp_reg__
+ 359 01b4 1F90      		pop __zero_reg__
+ 360 01b6 1895      		reti
+ 361               	/* epilogue end (size=17) */
+ 362               	/* function __vector_14 size 135 (101) */
+ 363               	.LFE10:
+ 365               	.global	TickCount
+ 366               	.global	TickCount
+ 367               		.section .bss
+ 370               	TickCount:
+ 371 0000 0000 0000 		.skip 4,0
+ 372               		.comm tcb,24,1
+ 453               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 timer.c
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:3      *ABS*:0000003f __SREG__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:4      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:5      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:6      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:7      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:20     .text:00000000 TickInit
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:370    .bss:00000000 TickCount
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:55     .text:00000028 TickGet
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:80     .text:00000046 TickUpdate
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:111    .text:00000076 TickDisable
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:128    .text:0000007e TickEnable
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:145    .text:00000086 Tick0Init
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:171    .text:0000009a __vector_16
+C:\DOCUME~1\jszx\LOCALS~1\Temp/ccTAPNec.s:222    .text:000000e6 __vector_14
+                            *COM*:00000018 tcb
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+update_ticks
+tasks_init
