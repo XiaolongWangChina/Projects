@@ -6,22 +6,23 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-
-import ICTCLAS.I3S.AC.ICTCLAS50;
-
 import dataStructure.*;
+import ICTCLAS.I3S.AC.ICTCLAS50;
 
 public class Weibo {
 
 	private ArrayList<SinaWeibo> sinaWeibo; //载入好的微博数据
+	
 	HashMap<String,Integer> hsMap=new HashMap<String,Integer>();
 
 	public ArrayList<SinaWeibo> getSinaWeibo() {
 		return this.sinaWeibo;
 	}
+
 	public HashMap<String,Integer> gethsMap() {
 		return this.hsMap;
 	}
+
 	public void setSinaWeibo(ArrayList<SinaWeibo> sw){
 		this.sinaWeibo=sw;
 	}
@@ -46,10 +47,8 @@ public class Weibo {
 				System.out.println("Init ICTCLAS succeed.");
 			}
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 
 		ArrayList<SinaWeibo> sinaWeibo = new ArrayList<SinaWeibo>();
 
@@ -60,8 +59,6 @@ public class Weibo {
 			in = new Scanner(new FileInputStream("data\\test_sinaweibo.txt"),
 					"UTF-8");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-
 			e.printStackTrace();
 			System.out.println("Fail to read weibo-text.");
 			System.out.println("Init failed.");
@@ -165,10 +162,9 @@ public class Weibo {
 					}
 
 				} catch (UnsupportedEncodingException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//
+
 				if (line.startsWith("</DOC>") && line.endsWith("</DOC>")) {
 					line = in.nextLine();
 				}
@@ -188,11 +184,11 @@ public class Weibo {
 			}
 
 		}
+
 		this.sinaWeibo=sinaWeibo;
 		System.out.println("Load " + count + " sinaWeibo.");
 		System.out.println("Init succeed");
 
 		testICTCLAS50.ICTCLAS_Exit();
-
 	}
 }

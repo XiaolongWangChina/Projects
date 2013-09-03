@@ -1,8 +1,8 @@
 package dataStructure;
 
 public class TextSeg {
-	private String textSeg=null; //´Ê
-	private String textSegPOS=null;//´ÊÐÔ
+	private String textSeg=null; 
+	private String textSegPOS=null;
 
 	public TextSeg(String textSeg,String textSegPOS)
 	{
