@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>1227918347</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\DW710C-2.ewd</file>
+      <file>$PROJ_DIR$\Debug\Obj\71x_init.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\wdg.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\bspi.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\eic.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\gpio.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\rtc.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\uart.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\71x_lib.r79</file>
+      <file>$TOOLKIT_DIR$\inc\stdlib.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\LunXun.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\Spi_Flash.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\manage_485_asset_addr.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\71x_vect.r79</file>
+      <file>$TOOLKIT_DIR$\inc\DLib_Threads.h</file>
+      <file>$TOOLKIT_DIR$\inc\time.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\tim.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\Key.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\gpio.r79</file>
+      <file>$TOOLKIT_DIR$\inc\ysizet.h</file>
+      <file>$TOOLKIT_DIR$\inc\DLib_Product.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\main.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\wdg.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\flash.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\manage_485_asset_addr.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\LCD.r79</file>
+      <file>$TOOLKIT_DIR$\inc\DLib_Defaults.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\xti.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\LED.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\xencoding_limits.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\eic.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\uart.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\pub_tool.r79</file>
+      <file>$PROJ_DIR$\Debug\Exe\DW710C-2.d79</file>
+      <file>$PROJ_DIR$\Debug\Obj\xti.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\Spi_Flash.r79</file>
+      <file>$TOOLKIT_DIR$\inc\stdarg.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\LunXun.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\yvals.h</file>
+      <file>$TOOLKIT_DIR$\lib\dl4tpannl8n.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\tim.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\bspi.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\LED.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\rtc.pbi</file>
+      <file>$PROJ_DIR$\include\xti.h</file>
+      <file>$PROJ_DIR$\Debug\Exe\DW710C-2.sim</file>
+      <file>$PROJ_DIR$\source\xti.c</file>
+      <file>$TOOLKIT_DIR$\lib\dl4tpannl8n.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\rccu.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\pub_tool.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\Key.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\LCD.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\71x_it.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\flash.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\read_dl.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\DW710C-2.pbd</file>
+      <file>$PROJ_DIR$\Debug\Obj\font.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\71x_lib.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\read_dl.r79</file>
+      <file>$PROJ_DIR$\Debug\Obj\font.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\stdio.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\71x_it.pbi</file>
+      <file>$PROJ_DIR$\include\71x_it.h</file>
+      <file>$PROJ_DIR$\include\71x_type.h</file>
+      <file>$PROJ_DIR$\include\bspi.h</file>
+      <file>$PROJ_DIR$\include\eic.h</file>
+      <file>$PROJ_DIR$\include\Extern_Var.h</file>
+      <file>$PROJ_DIR$\include\flash.h</file>
+      <file>$PROJ_DIR$\include\font.h</file>
+      <file>$PROJ_DIR$\include\Global_define.h</file>
+      <file>$PROJ_DIR$\include\gpio.h</file>
+      <file>$PROJ_DIR$\include\71x_lib.h</file>
+      <file>$PROJ_DIR$\source\71x_it.c</file>
+      <file>$PROJ_DIR$\source\71x_lib.c</file>
+      <file>$PROJ_DIR$\source\bspi.c</file>
+      <file>$PROJ_DIR$\source\eic.c</file>
+      <file>$PROJ_DIR$\source\flash.c</file>
+      <file>$PROJ_DIR$\source\font.c</file>
+      <file>$PROJ_DIR$\source\gpio.c</file>
+      <file>$PROJ_DIR$\source\Key.c</file>
+      <file>$PROJ_DIR$\source\LCD.c</file>
+      <file>$PROJ_DIR$\source\LED.c</file>
+      <file>$PROJ_DIR$\source\LunXun.c</file>
+      <file>$PROJ_DIR$\source\main.c</file>
+      <file>$PROJ_DIR$\source\manage_485_asset_addr.c</file>
+      <file>$PROJ_DIR$\source\pub_tool.c</file>
+      <file>$PROJ_DIR$\include\Key.h</file>
+      <file>$PROJ_DIR$\include\LCD.h</file>
+      <file>$PROJ_DIR$\include\LED.h</file>
+      <file>$PROJ_DIR$\include\LunXun.h</file>
+      <file>$PROJ_DIR$\include\manage_485_asset_addr.h</file>
+      <file>$PROJ_DIR$\include\pub_tool.h</file>
+      <file>$PROJ_DIR$\include\rccu.h</file>
+      <file>$PROJ_DIR$\include\read_dl.h</file>
+      <file>$PROJ_DIR$\include\rtc.h</file>
+      <file>$PROJ_DIR$\include\Spi_Flash.h</file>
+      <file>$PROJ_DIR$\include\Task_Flag.h</file>
+      <file>$PROJ_DIR$\include\tim.h</file>
+      <file>$PROJ_DIR$\include\uart.h</file>
+      <file>$PROJ_DIR$\include\wdg.h</file>
+      <file>$PROJ_DIR$\linker\lnkarm_flash.xcl</file>
+      <file>$PROJ_DIR$\linker\lnkarm_ram.xcl</file>
+      <file>$PROJ_DIR$\include\71x_conf.h</file>
+      <file>$PROJ_DIR$\include\71x_map.h</file>
+      <file>$PROJ_DIR$\source\rccu.c</file>
+      <file>$PROJ_DIR$\source\read_dl.c</file>
+      <file>$PROJ_DIR$\source\rtc.c</file>
+      <file>$PROJ_DIR$\source\Spi_Flash.c</file>
+      <file>$PROJ_DIR$\source\tim.c</file>
+      <file>$PROJ_DIR$\source\uart.c</file>
+      <file>$PROJ_DIR$\source\wdg.c</file>
+      <file>$PROJ_DIR$\startup\71x_init.s</file>
+      <file>$PROJ_DIR$\startup\71x_vect.s</file>
+      <file>$PROJ_DIR$\DW710C-2.dep</file>
+      <file>$PROJ_DIR$\DW710C-2.ewp</file>
+      <file>$PROJ_DIR$\DW710C-2.eww</file>
+      <file>$TOOLKIT_DIR$\inc\string.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\rccu.r79</file>
+    </outputs>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 34 46</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\DW710C-2.d79</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 46</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 101 1 53 9 14 18 26 43 11 36 4 31 54 57 19 22 25 33 118 59 7 41 32 3 40</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\xti.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 28</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 45 104 103 64</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 45 104 103 64</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Obj\DW710C-2.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 62 58 51 52 29 38 12 42 5 24 60 6 2 13 50 49 55 44 17 8 23</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\71x_it.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 53</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 62</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 63 72 104 103 64 117 39 27 48 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 63 72 104 103 64 117 39 27 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\71x_lib.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 9</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 58</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 104 103 64</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 104 103 64</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\bspi.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 4</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 65 104 103 64</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 65 104 103 64</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\eic.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 31</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 5</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 66 104 103 64</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 66 104 103 64</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\flash.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 54</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 24</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 68 104 103 64</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 68 104 103 64</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\font.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 57</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 60</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 69 72 104 103 64 117 39 27 48 21 30 15 20 97 70 96 67 16 92 89 71 88 98 90 99 93 66 87 94 65 68 95 100 61 37</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 69 72 104 103 64 117 39 27 21 30 15 20 97 70 96 67 16 92 89 71 88 98 90 99 93 66 87 94 65 68 95 100 61 37</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\gpio.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 19</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 6</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 71 104 103 64</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 71 104 103 64</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\Key.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 18</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 51</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 87 72 104 103 64 117 39 27 48 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 94 65 95 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 87 72 104 103 64 117 39 27 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 94 65 95 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\LCD.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 26</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 52</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 61 39 27 48 21 30 15 20 37 88 72 104 103 64 117 97 70 96 67 16 92 89 71 69 68 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 61 39 27 21 30 15 20 37 88 72 104 103 64 117 97 70 96 67 16 92 89 71 69 68 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\LED.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 43</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 29</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 89 72 104 103 64 117 39 27 48 21 30 15 20 97 70 96 67 16 92 69 68 88 98 90 99 93 71 66 87 94 65 95 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 89 72 104 103 64 117 39 27 21 30 15 20 97 70 96 67 16 92 69 68 88 98 90 99 93 71 66 87 94 65 95 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\LunXun.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 11</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 38</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 72 104 103 64 117 39 27 48 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 72 104 103 64 117 39 27 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\main.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 22</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 2</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 72 104 103 64 117 39 27 48 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100 61 10</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 72 104 103 64 117 39 27 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100 61 10</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\manage_485_asset_addr.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 25</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 13</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 61 39 27 48 21 30 15 20 117 91 72 104 103 64 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 61 39 27 21 30 15 20 117 91 72 104 103 64 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\pub_tool.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 33</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 50</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 92 72 104 103 64 117 39 27 48 21 30 15 20 97 70 96 67 16 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 92 72 104 103 64 117 39 27 21 30 15 20 97 70 96 67 16 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\rccu.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 118</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 93 104 103 64</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 93 104 103 64</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\read_dl.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 59</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 55</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 61 39 27 48 21 30 15 20 117 94 72 104 103 64 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 65 95 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 61 39 27 21 30 15 20 117 94 72 104 103 64 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 65 95 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\rtc.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 7</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 44</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 95 72 104 103 64 117 39 27 48 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 95 72 104 103 64 117 39 27 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\Spi_Flash.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 36</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 12</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 72 104 103 64 117 39 27 48 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 72 104 103 64 117 39 27 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\tim.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 41</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 17</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 98 104 103 64 72 117 39 27 48 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 98 104 103 64 72 117 39 27 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 90 99 93 66 87 94 65 95 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\uart.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 32</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 8</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 99 104 103 64 72 117 39 27 48 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 87 94 65 66 93 95 100 91 61 10</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 99 104 103 64 72 117 39 27 21 30 15 20 97 70 96 67 16 92 89 71 69 68 88 98 90 87 94 65 66 93 95 100 91 61 10</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\source\wdg.c</name>
+      <outputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 3</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 23</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCARM</name>
+          <file> 100 104 103 64 93</file>
+        </tool>
+        <tool>
+          <name>BICOMP</name>
+          <file> 100 104 103 64 93</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\startup\71x_init.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 1</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\startup\71x_vect.s</name>
+      <outputs>
+        <tool>
+          <name>AARM</name>
+          <file> 14</file>
+        </tool>
+      </outputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs/>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+    <forcedrebuild>
+      <name>[REBUILD_ALL]</name>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>DW710C-2/Debug</Project></CurrentConfigs></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>146</Column0><Column1>1</Column1><Column2>27</Column2><Column3>1242220</Column3></ColumnWidths>
+      </Workspace>
+      <Build>
+        
+        
+        
+        
+      <PreferedWindows><Position>3</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows><Window><Factory>Breakpoints</Factory></Window></Windows></PreferedWindows><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>915</ColumnWidth1><ColumnWidth2>244</ColumnWidth2><ColumnWidth3>61</ColumnWidth3></Build>
+      <TerminalIO/>
+      <CodeCoveragePlugin/>
+    <Debug-Log><PreferedWindows><Position>3</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows><Window><Factory>Build</Factory></Window></Windows></PreferedWindows></Debug-Log><Breakpoints><PreferedWindows><Position>3</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows><Window><Factory>Build</Factory></Window></Windows></PreferedWindows></Breakpoints><Find-in-Files><ColumnWidth0>350</ColumnWidth0><ColumnWidth1>50</ColumnWidth1><ColumnWidth2>601</ColumnWidth2></Find-in-Files></Static>
+    <Windows>
+      
+      
+    <Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-5655-9757</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>DW710C-2</ExpandedNode><ExpandedNode>DW710C-2/Output</ExpandedNode><ExpandedNode>DW710C-2/include</ExpandedNode><ExpandedNode>DW710C-2/linker</ExpandedNode><ExpandedNode>DW710C-2/source</ExpandedNode><ExpandedNode>DW710C-2/startup</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-26691-18699</Identity><TabName>Build</TabName><Factory>Build</Factory><Session/></Tab><Tab><Identity>TabID-8520-19858</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\jszx\&#x684C;&#x9762;\DW710C_&#x663e;&#x793A;&#x56Fe;&#x7247;&#x672A;&#x5B8C;&#x6210;\DW710C_&#x5168;&#x65B0;&#x7684;\source\LCD.c</Filename><XPos>0</XPos><YPos>299</YPos><SelStart>8169</SelStart><SelEnd>8169</SelEnd></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\jszx\&#x684C;&#x9762;\DW710C_&#x663e;&#x793A;&#x56Fe;&#x7247;&#x672A;&#x5B8C;&#x6210;\DW710C_&#x5168;&#x65B0;&#x7684;\startup\71x_init.s</Filename><XPos>0</XPos><YPos>268</YPos><SelStart>15618</SelStart><SelEnd>15618</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>C:\Documents and Settings\jszx\&#x684C;&#x9762;\DW710C_&#x663e;&#x793A;&#x56Fe;&#x7247;&#x672A;&#x5B8C;&#x6210;\DW710C_&#x5168;&#x65B0;&#x7684;\source\main.c</Filename><XPos>0</XPos><YPos>39</YPos><SelStart>2076</SelStart><SelEnd>2076</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-003be8c8><key>iaridepm.enu1</key></Toolbar-003be8c8></Sizes></Row0><Row1><Sizes/></Row1><Row2><Sizes><Toolbar-016802a8><key>debuggergui.enu1</key></Toolbar-016802a8></Sizes></Row2></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>475</Bottom><Right>211</Right><x>-2</x><y>-2</y><xscreen>0</xscreen><yscreen>0</yscreen><sizeHorzCX>0</sizeHorzCX><sizeHorzCY>0</sizeHorzCY><sizeVertCX>208008</sizeVertCX><sizeVertCY>689306</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>172</Bottom><Right>1026</Right><x>-2</x><y>-2</y><xscreen>1028</xscreen><yscreen>174</yscreen><sizeHorzCX>1003906</sizeHorzCX><sizeHorzCY>251445</sizeHorzCY><sizeVertCX>195313</sizeVertCX><sizeVertCY>289017</sizeVertCY></Rect></Wnd3></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+
