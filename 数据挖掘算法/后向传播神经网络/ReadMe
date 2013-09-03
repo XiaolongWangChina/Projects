@@ -1,0 +1,8 @@
+Folds description:
+
+project------------only process the training of the model to meet the accuracy rate
+
+project-bagging----training the model using bagging algorithm
+
+project-test-------using the data in training.txt to train the model and using the data in testing.txt to test the model
+

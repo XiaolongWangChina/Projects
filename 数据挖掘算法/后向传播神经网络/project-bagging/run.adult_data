@@ -1,0 +1,3 @@
+#!/bin/bash
+
+./NN -r adult_data.txt -t testing.txt -d 12 -c 2 -s 499 -m 200 -n 5 -l 0.3 -a 0.2 -p 0
