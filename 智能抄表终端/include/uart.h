@@ -344,5 +344,3 @@ inline u16 UART_FlagStatus(UART_TypeDef *UARTx)
 }
 
 #endif /* _UART_H */
-
-/******************* (C) COPYRIGHT 2003 STMicroelectronics *****END OF FILE****/

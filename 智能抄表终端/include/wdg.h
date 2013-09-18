@@ -84,4 +84,3 @@ void		WDG_Init();
 
 #endif /* __WDG_H */
 
-/******************* (C) COPYRIGHT 2003 STMicroelectronics *****END OF FILE****/
