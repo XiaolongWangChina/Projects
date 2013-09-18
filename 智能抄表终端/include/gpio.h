@@ -82,5 +82,3 @@ inline void GPIO_WordWrite(GPIO_TypeDef *GPIOx, u16 Port_Val)
 }
 
 #endif /* __GPIO_H */
-
-/******************* (C) COPYRIGHT 2003 STMicroelectronics *****END OF FILE****/
