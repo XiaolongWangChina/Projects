@@ -22,5 +22,3 @@ void UART3_IRQHandler    (void);
 void T2TIMI_IRQHandler   (void);
 
 #endif /* _71x_IT_H */
-
-/******************* (C) COPYRIGHT 2003 STMicroelectronics *****END OF FILE****/
